@@ -8,6 +8,9 @@ import {
   TableCell,
   TableRow,
   TextField,
+  Box,
+  Select,
+  MenuItem,
 } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import {
@@ -15,25 +18,28 @@ import {
 } from '@mui/icons-material';
 
 function Header() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(true);
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
-  const [calorie, setCalorie] = useState("");
+  const [sex, setSex] = useState("");
   const inputRef = useRef(null);
   const imageUpload = () => {
     console.log(inputRef.current);
     inputRef.current?.click();
   };
+  const [isSign,setIsSign] = useState(false);
   return (
     <header>
       <h1 className="service-title">regretter</h1>
-      <Button 
+      <Box className="iconBox">
+      <Button
         onClick={() => setIsDialogOpen(true)}
       >
           <AccountCircle className="user-icon"/>
       </Button>
+      </Box>
       <Dialog open={isDialogOpen} fullWidth maxWidth="md">
-        <DialogTitle>設定</DialogTitle>
+        <DialogTitle>{!isSign?'最初に設定を入力してね！':'設定'}</DialogTitle>
         <DialogContent>
           <TableRow>
             <TableCell>
@@ -45,6 +51,19 @@ function Header() {
             <TableCell>山田太郎</TableCell>
           </TableRow>
           <TableRow>
+          <TableCell>性別</TableCell>
+          <TableCell>
+            <Select value={sex} onChange={(e)=>setSex(e.target.value)}>
+              <MenuItem value='男'>
+              男
+              </MenuItem>
+              <MenuItem value='女'>
+              女
+              </MenuItem>
+            </Select>
+          </TableCell>
+          </TableRow>
+          <TableRow>
             <TableCell>体重</TableCell>
             <TableCell>
               <TextField
@@ -54,26 +73,17 @@ function Header() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>年齢</TableCell>
+            <TableCell >年齢</TableCell>
             <TableCell>
               <TextField onChange={(e) => setAge(e.target.value)} value={age} />
             </TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell>目標カロリー</TableCell>
-            <TableCell>
-              <TextField
-                onChange={(e) => setCalorie(e.target.value)}
-                value={calorie}
-              />
-            </TableCell>
-          </TableRow>
-          <TableRow>
+          <TableRow >
             <TableCell>
               <Button onClick={() => setIsDialogOpen(false)}>キャンセル</Button>
             </TableCell>
             <TableCell>
-              <Button onClick={() => setIsDialogOpen(false)}>保存</Button>
+              <Button disabled={(age === ''||weight===''||sex==='')}onClick={() => {setIsDialogOpen(false);setIsSign(true)}}>保存</Button>
             </TableCell>
           </TableRow>
         </DialogContent>
