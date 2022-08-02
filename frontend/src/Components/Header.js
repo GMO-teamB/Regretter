@@ -8,6 +8,7 @@ import {
   TableCell,
   TableRow,
   TextField,
+  Box,
 } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import {
@@ -27,11 +28,13 @@ function Header() {
   return (
     <header>
       <h1 className="service-title">regretter</h1>
-      <Button 
+      <Box>
+      <Button
         onClick={() => setIsDialogOpen(true)}
       >
           <AccountCircle className="user-icon"/>
       </Button>
+      </Box>
       <Dialog open={isDialogOpen} fullWidth maxWidth="md">
         <DialogTitle>設定</DialogTitle>
         <DialogContent>

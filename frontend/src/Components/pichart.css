@@ -1,9 +1,27 @@
-.circle{
-
-}
-
 .circleBox{
     display:"inline-flex";
     align-items: center;
     justify-content: center;
+    height:300px;
+    width:100%;
+    margin-top: 50px;
+}
+
+.circleContent{
+  left: 0;
+  top: 16px;
+  bottom: 0;
+  right: 0;
+}
+.probability{
+  margin-bottom: 4px;
+}
+
+.circleBackground{
+  color: #bfbfbf;
+}
+
+.circle{
+  position: absolute;
+  color:white;
 }

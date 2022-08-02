@@ -1,4 +1,12 @@
 .top{
     align-content: center;
     justify-content: center;
+    height:400px;
+    width:400px;
+    display: 'block';
+}
+.startButton{
+    margin-top: 30px;
+    justify-content: center;
+    align-content: center;
 }
