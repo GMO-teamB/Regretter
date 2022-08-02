@@ -24,6 +24,7 @@
 
 /public/assets
 .byebug_history
+/config/initializers/devise.rb
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
