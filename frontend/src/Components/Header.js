@@ -1,8 +1,6 @@
 import "./Header.css";
 import {
-  Box,
   Button,
-  ButtonBase,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -29,13 +27,11 @@ function Header() {
   return (
     <header>
       <h1 className="service-title">regretter</h1>
-      <ButtonBase
+      <Button 
         onClick={() => setIsDialogOpen(true)}
       >
-        <Box>
-          <AccountCircle />
-        </Box>
-      </ButtonBase>
+          <AccountCircle className="user-icon"/>
+      </Button>
       <Dialog open={isDialogOpen} fullWidth maxWidth="md">
         <DialogTitle>設定</DialogTitle>
         <DialogContent>
