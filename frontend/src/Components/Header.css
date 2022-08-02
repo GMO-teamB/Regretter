@@ -13,12 +13,16 @@ header {
     color: white;
     margin-top: 2rem;
   }
+  .iconBox{
+    position: absolute;
+    right: 0;
+  }
   
   .user-icon {
     color: white;
-    position: absolute;
     right: 0;
-    font-size: 5rem;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
   }
   
   .dropdown {

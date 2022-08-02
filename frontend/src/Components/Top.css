@@ -1,12 +1,24 @@
 .top{
     align-content: center;
     justify-content: center;
-    height:400px;
     width:400px;
     display: 'block';
 }
-.startButton{
+.startButtonBox{
     margin-top: 30px;
+    justify-content: center;
+    align-content: center;
+    width:100%;
+}
+.startButton{
+    justify-content: center;
+    align-content: center;
+    width:100%;
+}
+.cautionBox{
+    border: 4px solid;
+    border-color: red;
+    border-radius: 8px;
     justify-content: center;
     align-content: center;
 }

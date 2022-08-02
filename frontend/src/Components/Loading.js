@@ -3,6 +3,8 @@ import React from 'react'
 import "./Loading.css";
 import Timer from "react-timer-wrapper";
 import Timecode from "react-timecode";
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Loading() {
   return (
@@ -19,7 +21,7 @@ export default function Loading() {
             <Timecode />
           </Timer>
         </div>
-        <button className="done-btn">終了する</button>
+        <Button className="done-btn" component={Link} to="/">終了する</Button>
       </div>
     </div>
   );
