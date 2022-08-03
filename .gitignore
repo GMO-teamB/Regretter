@@ -36,6 +36,5 @@
 yarn-debug.log*
 .yarn-integrity
 postgresql.conf
-Gemfile.lock
 db/schema.rb
 yarn.lock
