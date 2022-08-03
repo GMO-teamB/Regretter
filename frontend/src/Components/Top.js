@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { PieChart } from './pichart'
 import "./Top.css";
-import { Box, Button, Card, CardHeader, CardMedia, IconButton} from '@mui/material'
+import { Box, Card, CardHeader, CardMedia, IconButton} from '@mui/material'
 import devImage from './images/dev.jpg';
 import devImage2 from './images/dev2.jpg';
 import desImage from './images/吹き出し.png'
@@ -47,7 +47,7 @@ export default function Top() {
     <div className='top'>
        <PieChart></PieChart>
        <Box className='startButtonBox'>
-        <Button  className='startButton' component={Link} to="/task" >運動を開始する</Button>
+       <NavLink to="/task" className="startButton">タスク選択画面へ</NavLink>
        </Box>
        <Card className='cautionBox'>
         <CardHeader className='cautionText' title={`あと${mins}:${seconds<10?`0${seconds}`:seconds}分で恥ずかしい画像がtweetされます!`}/>
