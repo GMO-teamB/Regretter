@@ -30,7 +30,7 @@ function Header() {
   const [isSign,setIsSign] = useState(false);
   return (
     <header>
-      <h1 className="service-title">regretter</h1>
+      <h1 className="service-title">Regretter</h1>
       <Box className="iconBox">
       <Button
         onClick={() => setIsDialogOpen(true)}

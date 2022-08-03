@@ -9,9 +9,9 @@ header {
   }
   
   .service-title {
-    font-size: 3rem;
+    font-size: 4rem;
     color: white;
-    margin-top: 2rem;
+    font-weight: bold;
   }
   .iconBox{
     position: absolute;
@@ -21,10 +21,11 @@ header {
   .user-icon {
     color: white;
     right: 0;
-    font-size: 1.5rem;
     margin-top: 0.5rem;
+    height:40px;
+    
   }
-  
+
   .dropdown {
     width: 100%;
     background-color: #14b4c9;
