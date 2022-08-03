@@ -7,6 +7,7 @@ import devImage from './images/dev.jpg';
 import devImage2 from './images/dev2.jpg';
 import desImage from './images/吹き出し.png'
 import { Add, Cached } from '@mui/icons-material';
+import sqImage from './images/イカ警告透.png'
 
 export default function Top() {
   const chooseImg=(number)=>{
@@ -42,7 +43,7 @@ export default function Top() {
     return () => {
       clearInterval(sampleInterval);
     };
-  });
+  },[seconds,mins]);
   return (
     <div className='top'>
        <PieChart></PieChart>
@@ -50,10 +51,11 @@ export default function Top() {
        <NavLink to="/task" className="startButton">タスク選択画面へ</NavLink>
        </Box>
        <div className='sample'>
+       {/* <CardMedia component="img" image={sqImage} style={{width:'40%',position:'absolute', left:0}}/> */}
        <Card className='cautionBox'>
-        <CardHeader className='cautionText' title={`あと${mins}:${seconds<10?`0${seconds}`:seconds}分で恥ずかしい画像がtweetされます!`}/>
+        <CardHeader className='cautionText' title={`自動tweetまで${mins}:${seconds<10?`0${seconds}`:seconds}`}/>
         <Box className='imageBox'>
-          <CardMedia component="img" image={desImage} style={{alignSelf:'center',justifySelf:'center',width:'30%'}}/>
+          <CardMedia component="img" image={desImage} style={{alignSelf:'center',justifySelf:'center',width:'40%'}}/>
           <CardMedia component="img" image={chooseImg(number)} style={{alignSelf:'center',justifySelf:'center',width:'50%'}}/>
           <Box>
           <IconButton onClick={imageUpload}>
