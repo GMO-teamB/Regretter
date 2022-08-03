@@ -1,7 +1,7 @@
 .top{
     align-content: center;
     justify-content: center;
-    width:400px;
+    width:100%;
     display: 'block';
 }
 .startButtonBox{
@@ -19,6 +19,23 @@
     border: 4px solid;
     border-color: red;
     border-radius: 8px;
+    width:'auto';
+    margin-right: 60px;
+    margin-left: 60px;
+}
+.cautionText{
+    text-align: center;
+    padding-top: 10px;
+}
+.imageBox{
+    display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    position:relative;
+}
+.imageChengeButton{
+    color: white;
+    right: 0;
+    bottom: 0;
+    position: absolute;
 }

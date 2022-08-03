@@ -38,7 +38,14 @@ function Header() {
           <AccountCircle className="user-icon"/>
       </Button>
       </Box>
-      <Dialog open={isDialogOpen} fullWidth maxWidth="md">
+      <Dialog open={isDialogOpen} fullWidth maxWidth="md"
+        PaperProps={{
+          style: {
+            boxShadow: "none",
+            textAlign: "center",
+            width:'auto',
+          },
+        }}>
         <DialogTitle>{!isSign?'最初に設定を入力してね！':'設定'}</DialogTitle>
         <DialogContent>
           <TableRow>
