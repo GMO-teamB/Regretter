@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.94120bc0.css",
+    "main.js": "/static/js/main.e26cafe7.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/吹き出し.png": "/static/media/吹き出し.f3e10067868d32001ed2.png",
+    "index.html": "/index.html",
+    "main.94120bc0.css.map": "/static/css/main.94120bc0.css.map",
+    "main.e26cafe7.js.map": "/static/js/main.e26cafe7.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94120bc0.css",
+    "static/js/main.e26cafe7.js"
+  ]
+}
