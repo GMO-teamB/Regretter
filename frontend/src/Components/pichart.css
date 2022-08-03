@@ -25,3 +25,25 @@
   position: absolute;
   color:white;
 }
+
+
+.changeModeRow{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.selectedButton{
+  background-color: #33c9dc !important;
+  color:white !important;
+  margin: 2rem 0 !important;
+  font-weight:bold !important;
+  border: 3px #149edd solid !important;
+}
+
+.notSelectedButton{
+  background-color: #33c9dc !important;
+  color:white !important;
+  margin:2rem 0 !important;
+  font-weight:bold !important;
+
+}
