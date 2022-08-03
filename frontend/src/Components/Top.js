@@ -49,11 +49,12 @@ export default function Top() {
        <Box className='startButtonBox'>
         <Button  className='startButton' component={Link} to="/task" >運動を開始する</Button>
        </Box>
+       <div className='sample'>
        <Card className='cautionBox'>
         <CardHeader className='cautionText' title={`あと${mins}:${seconds<10?`0${seconds}`:seconds}分で恥ずかしい画像がtweetされます!`}/>
         <Box className='imageBox'>
-          <CardMedia component="img" image={desImage} style={{alignSelf:'center',justifySelf:'center',height:200}}/>
-          <CardMedia component="img" image={chooseImg(number)} style={{alignSelf:'center',justifySelf:'center',height:250}}/>
+          <CardMedia component="img" image={desImage} style={{alignSelf:'center',justifySelf:'center',width:'30%'}}/>
+          <CardMedia component="img" image={chooseImg(number)} style={{alignSelf:'center',justifySelf:'center',width:'50%'}}/>
           <Box>
           <IconButton onClick={imageUpload}>
             <Add/>
@@ -64,6 +65,7 @@ export default function Top() {
           </Box>
         </Box>
       </Card>
+      </div>
       <input hidden ref={inputRef} type="file" accept="image/*" />
     </div>
 
