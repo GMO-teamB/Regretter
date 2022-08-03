@@ -16,6 +16,7 @@ import React, { useRef, useState } from 'react';
 import {
   AccountCircle,
 } from '@mui/icons-material';
+import {NavLink} from "react-router-dom";
 
 function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(true);
@@ -30,7 +31,7 @@ function Header() {
   const [isSign,setIsSign] = useState(false);
   return (
     <header>
-      <h1 className="service-title">Regretter</h1>
+      <NavLink to="/" className="service-title">Regretter</NavLink>
       <Box className="iconBox">
       <Button
         onClick={() => setIsDialogOpen(true)}
