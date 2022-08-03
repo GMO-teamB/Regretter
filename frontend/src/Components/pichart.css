@@ -2,11 +2,19 @@
     display:"inline-flex";
     align-items: center;
     justify-content: center;
-    height:300px;
+    height:400px;
     width:100%;
     margin-top: 50px;
 }
-
+.changeModeRow{
+    display:'flex';
+}
+.selectedButton{
+    background-color: aqua;
+}
+.notSelectedButton{
+    background-color: #bfbfbf;
+}
 .circleContent{
   left: 0;
   top: 16px;
