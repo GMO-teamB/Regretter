@@ -1,11 +1,11 @@
 .top{
     align-content: center;
     justify-content: center;
+    width:100%;
     display: 'block';
 }
 .startButtonBox{
-    margin-top: 80px;
-    display:flex;
+    margin-top: 30px;
     justify-content: center;
     align-content: center;
     width:100%;
@@ -14,26 +14,14 @@
     justify-content: center;
     align-content: center;
     width:100%;
-    text-align: center;
-    margin-bottom:3rem;
-    background-color:#33c9dc;
-    width:100%;
-    max-width:150px;
-    padding:0.5rem;
-    text-decoration:none;
-    color:white;
-    border-radius:10px;
-    font-weight: bold;
-}
-
-.startButton:hover{
-    opacity:0.7;
 }
 .cautionBox{
-    width:100%;
-    margin-right: 2px;
-    margin-left: 2px;
-    
+    border: 4px solid;
+    border-color: red;
+    border-radius: 8px;
+    width:'auto';
+    margin-right: 60px;
+    margin-left: 60px;
 }
 .cautionText{
     text-align: center;
@@ -50,10 +38,4 @@
     right: 0;
     bottom: 0;
     position: absolute;
-}
-.sample{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    
 }

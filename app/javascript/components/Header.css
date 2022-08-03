@@ -9,10 +9,9 @@ header {
   }
   
   .service-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: white;
-    font-weight: bold;
-    text-decoration:none;
+    margin-top: 2rem;
   }
   .iconBox{
     position: absolute;
@@ -22,15 +21,10 @@ header {
   .user-icon {
     color: white;
     right: 0;
+    font-size: 1.5rem;
     margin-top: 0.5rem;
-    height:40px;
   }
-
-  .MuiSvgIcon-fontSizeMedium{
-    font-size:3rem !important;
-    right: 0 !important;
-  }
-
+  
   .dropdown {
     width: 100%;
     background-color: #14b4c9;
@@ -45,21 +39,4 @@ header {
     list-style: none;
     color:white;
     font-size: 2rem;
-  }
-
-  @media screen and (min-width:768px){
-    .service-title {
-      font-size: 3.5rem;
-      color: white;
-      font-weight: bold;
-    }
-
-    .MuiSvgIcon-fontSizeMedium{
-      font-size:3rem !important;
-    }
-
-    .icon-box{
-      margin-right:1rem;
-    }
-
   }
