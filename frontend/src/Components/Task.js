@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Task.css";
 import Loading from "./Loading";
+import { TextField } from "@mui/material";
 
 function Task() {
   const [trainingFilter, setTrainingFilter] = useState("");
@@ -11,29 +12,20 @@ function Task() {
 
   //ここにフィルタリングの機能を追加する　dbができた後、、
 
-  // const trainingSubmitHandler = (e) => {
-  //   e.preventDefault();
-
-  //   if (trainingTime < 1 || trainingTime === "") {
-  //     setIsError(true);
-  //     return;
-  //   }
-
-  //   if (trainingTime < 1 && trainingTime !== "") {
-  //     setIsError(true);
-  //     return;
-  //   }
-
-  //   if (trainingTime !== "" && trainingTime > 0) {
-  //     setIsError(false);
-  //   }
-  //   setIsError(false);
-  // };
-
   const jogValue = 80;
   const shutValue = 150;
   const pushUpValue = 50;
   const [isTraining, setIsTraining] = useState(false);
+
+  const sendHandler = ()=>{
+    if(tempTrainingTime !== '' && trainingFilter !== ''){
+      console.log('1')
+      setTrainingTime(tempTrainingTime)
+      setTempTrainingTime('')}
+      else{
+      console.log('2')
+      setIsError(true)}
+  }
 
   //dbができたら上記の値を使ってカロリー計算をする
 
@@ -206,7 +198,7 @@ function Task() {
             </svg>
             <h3>実行する種目と時間を指定してください</h3>
           </div>
-          <form className="training-form" onSubmit={()=>setTrainingTime(tempTrainingTime)}>
+          <div className="training-form">
           <select
             name="menu"
             className="training-selector"
@@ -214,39 +206,54 @@ function Task() {
             value={trainingFilter}
           >
             <optgroup>
-              <option value="" selected disabled hidden>
-                種目を選択
+              <option className="option-text" value="" selected disabled hidden>
+                カテゴリー選択
               </option>
-              <option value="ジョギング">ジョギング</option>
-              <option value="時速５km以上で歩く">時速５km以上で歩く</option>
-              <option value="腕立て伏せをする">腕立て</option>
-              <option value="シャトルラン">シャトルラン</option>
+              <option className="option-text" value="有酸素運動">
+                有酸素運動
+              </option>
+              <option className="option-text" value="無酸素運動">
+                無酸素運動
+              </option>
             </optgroup>
           </select>
+          {isError && trainingFilter === '' && (
+            <p className="error-msg">
+              選択してください
+            </p>
+          )}
 
           <input
             type="number"
-            className={`training-input ${isError && "error"}`}
+            className={`training-input ${isError && tempTrainingTime === '' ? "error" : ""}`}
             placeholder="数値 (分)"
             value={tempTrainingTime}
             onChange={(e) => setTempTrainingTime(e.target.value)}
+            onKeyDown={
+              (e)=>{
+                if (e.key === 'Enter'){
+                  console.log('Enter!')
+                  sendHandler()
+                }
+              }
+            }
           />
-          {isError && (
+          { isError && tempTrainingTime === '' && 
             <p className="error-msg">
-              {tempTrainingTime === ""
-                ? "＊入力してください"
-                : tempTrainingTime < 1
-                ? "＊1以上の値を入力してください"
-                : ""}
+              ＊入力してください
+            </p>}
+          { isError && tempTrainingTime < 1  && tempTrainingTime !==''&&
+            <p className="error-msg">
+              1以上の値を入力してください
             </p>
-          )}
+          }
           <button
             className="training-submit-btn"
-            type='submit'
+            onClick={()=>sendHandler()}
           >
             決定
           </button>
-          </form>
+          </div>
         </div>
       ) : (
         <div style={{textAlign:'center'}}>
