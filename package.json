@@ -1,8 +1,8 @@
 {
   "name": "Regretter",
   "private": true,
+  "homepage": "/app",
   "dependencies": {
-    "homepage": "/test",
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
     "@rails/actioncable": "^6.0.0",

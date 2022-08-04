@@ -8,10 +8,10 @@ import Task from "./Components/Task";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/app/">
       <Header />
       <Routes>
-        <Route path="/top" element={<Top />} />
+        <Route path="top" element={<Top />} />
         <Route path="task" element={<Task />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
