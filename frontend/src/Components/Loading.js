@@ -7,12 +7,12 @@ export default function Loading(props) {
   const [seconds, setSeconds] = useState(Number(props.time) * 60);
   const [isTraining, setIsTraining] = useState(false);
   const intervalRef = useRef(null);
+  const inputref = useRef(null);
   const [accel, setAccel] = useState(0);
   const [sumacc,setSumAcc] = useState(0);
   const permissionRequest = () => {
       DeviceMotionEvent.requestPermission();
       DeviceOrientationEvent.requestPermission();
-      inputref = useRef(null);
       window.addEventListener(
         "devicemotion",
         function (e) {

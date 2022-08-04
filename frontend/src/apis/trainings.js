@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { trainingsIndex } from '../url/index'
 
 export const fetchTrainings =async() => {
