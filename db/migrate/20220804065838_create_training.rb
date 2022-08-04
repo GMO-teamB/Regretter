@@ -4,6 +4,7 @@ class CreateTraining < ActiveRecord::Migration[6.0]
 
       t.string :name, null: false
       t.integer :calorie, null: false
+      t.integer :category_id, null: false
 
     end
   end
