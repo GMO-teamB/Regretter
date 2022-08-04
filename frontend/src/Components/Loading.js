@@ -10,8 +10,6 @@ export default function Loading(props) {
   const [accel, setAccel] = useState(0);
   const [sumacc,setSumAcc] = useState(0);
   const permissionRequest = () => {
-     console.log(1)
-     console.log(typeof DeviceMotionEvent.requestPermission)
       DeviceMotionEvent.requestPermission();
       DeviceOrientationEvent.requestPermission();
       window.addEventListener(
@@ -21,10 +19,13 @@ export default function Loading(props) {
           const y = e.acceleration.y;
           const z = e.acceleration.z;
           const acc = (x ^ 2) + (y ^ 2) + (z ^ 2);
+          console.log(`xはルート${x}`)
+          console.log(`yはルート${y}`)
+          console.log(`zはルート${z}`)
           console.log(`加速度はルート${acc}`)
           setAccel(acc);
-          const k = sumacc + acc 
-          setSumAcc(k)
+          // const k = sumacc + acc 
+          setSumAcc(k => k + 1)
           console.log(sumacc)
         },
         false
