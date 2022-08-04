@@ -2,30 +2,39 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import "./Loading.css";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
 
 export default function Loading(props) {
   const [seconds, setSeconds] = useState(Number(props.time) * 60);
   const [isTraining, setIsTraining] = useState(false);
   const intervalRef = useRef(null);
   const [accel, setAccel] = useState(0);
+  const [sumacc,setSumAcc] = useState(0);
   const permissionRequest = () => {
-     console.log(1)
-     console.log(typeof DeviceMotionEvent.requestPermission)
       DeviceMotionEvent.requestPermission();
       DeviceOrientationEvent.requestPermission();
+      inputref = useRef(null);
       window.addEventListener(
         "devicemotion",
         function (e) {
           const x = e.acceleration.x;
           const y = e.acceleration.y;
           const z = e.acceleration.z;
-          const acc = x ^ (2 + y) ^ (2 + z) ^ 2;
+          const acc = (x ^ 2) + (y ^ 2) + (z ^ 2);
+          console.log(`xはルート${x}`)
+          console.log(`yはルート${y}`)
+          console.log(`zはルート${z}`)
+          console.log(`加速度はルート${acc}`)
           setAccel(acc);
+          // const k = sumacc + acc 
+          setSumAcc(k => k + 1)
+          inputref.current += 1
+          console.log(`sumaccは${sumacc}`)
+          console.log(`レフは${inputref.current}`)
         },
         false
       );
   };
+
   useEffect(() => {
     if (isTraining) {
       intervalRef.current = setInterval(() => {
@@ -70,8 +79,6 @@ export default function Loading(props) {
         <div className="btn-container">
           <Button onClick={()=>permissionRequest()}> 加速度</Button>
           <div>{accel}</div>
-          <div>{typeof DeviceMotionEvent.requestPermission}</div>
-          <div>{typeof DeviceOrientationEvent.requestPermission}</div>
           {isTraining ? (
             <Button
               onMouseLeave={() => {

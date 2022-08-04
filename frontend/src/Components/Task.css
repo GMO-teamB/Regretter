@@ -230,6 +230,7 @@ optgroup {
     border: none;
     cursor: pointer;
     margin-top: 0.5rem;
+    margin-bottom:2rem;
   }
 
   .training-list-wrapper {
