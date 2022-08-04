@@ -17,15 +17,16 @@ function Task() {
   const pushUpValue = 50;
   const [isTraining, setIsTraining] = useState(false);
 
-  const sendHandler = ()=>{
-    if(tempTrainingTime !== '' && trainingFilter !== ''){
-      console.log('1')
-      setTrainingTime(tempTrainingTime)
-      setTempTrainingTime('')}
-      else{
-      console.log('2')
-      setIsError(true)}
-  }
+  const sendHandler = () => {
+    if (tempTrainingTime !== "" && trainingFilter !== "") {
+      console.log("1");
+      setTrainingTime(tempTrainingTime);
+      setTempTrainingTime("");
+    } else {
+      console.log("2");
+      setIsError(true);
+    }
+  };
 
   //dbができたら上記の値を使ってカロリー計算をする
 
@@ -199,64 +200,65 @@ function Task() {
             <h3>実行する種目と時間を指定してください</h3>
           </div>
           <div className="training-form">
-          <select
-            name="menu"
-            className="training-selector"
-            onChange={(e) => setTrainingFilter(e.target.value)}
-            value={trainingFilter}
-          >
-            <optgroup>
-              <option className="option-text" value="" selected disabled hidden>
-                カテゴリー選択
-              </option>
-              <option className="option-text" value="有酸素運動">
-                有酸素運動
-              </option>
-              <option className="option-text" value="無酸素運動">
-                無酸素運動
-              </option>
-            </optgroup>
-          </select>
-          {isError && trainingFilter === '' && (
-            <p className="error-msg">
-              選択してください
-            </p>
-          )}
+            <select
+              name="menu"
+              className="training-selector"
+              onChange={(e) => setTrainingFilter(e.target.value)}
+              value={trainingFilter}
+            >
+              <optgroup>
+                <option
+                  className="option-text"
+                  value=""
+                  selected
+                  disabled
+                  hidden
+                >
+                  カテゴリー選択
+                </option>
+                <option className="option-text" value="有酸素運動">
+                  有酸素運動
+                </option>
+                <option className="option-text" value="無酸素運動">
+                  無酸素運動
+                </option>
+              </optgroup>
+            </select>
+            {isError && trainingFilter === "" && (
+              <p className="error-msg">選択してください</p>
+            )}
 
-          <input
-            type="number"
-            className={`training-input ${isError && tempTrainingTime === '' ? "error" : ""}`}
-            placeholder="数値 (分)"
-            value={tempTrainingTime}
-            onChange={(e) => setTempTrainingTime(e.target.value)}
-            onKeyDown={
-              (e)=>{
-                if (e.key === 'Enter'){
-                  console.log('Enter!')
-                  sendHandler()
+            <input
+              type="number"
+              className={`training-input ${
+                isError && tempTrainingTime === "" ? "error" : ""
+              }`}
+              placeholder="数値 (分)"
+              value={tempTrainingTime}
+              onChange={(e) => setTempTrainingTime(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  console.log("Enter!");
+                  sendHandler();
                 }
-              }
-            }
-          />
-          { isError && tempTrainingTime === '' && 
-            <p className="error-msg">
-              ＊入力してください
-            </p>}
-          { isError && tempTrainingTime < 1  && tempTrainingTime !==''&&
-            <p className="error-msg">
-              1以上の値を入力してください
-            </p>
-          }
-          <button
-            className="training-submit-btn"
-            onClick={()=>sendHandler()}
-          >
-            決定
-          </button>
+              }}
+            />
+            {isError && tempTrainingTime === "" && (
+              <p className="error-msg">＊入力してください</p>
+            )}
+            {isError && tempTrainingTime < 1 && tempTrainingTime !== "" && (
+              <p className="error-msg">1以上の値を入力してください</p>
+            )}
+            <button
+              className="training-submit-btn"
+              onClick={() => sendHandler()}
+            >
+              決定
+            </button>
           </div>
         </div>
       ) : (
-        <div style={{textAlign:'center'}}>
+        <div style={{ textAlign: "center" }}>
           <button
             className="back-btn"
             onClick={() => {
