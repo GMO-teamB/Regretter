@@ -38,41 +38,47 @@ export default function Loading(props) {
   return (
     <div className="container">
       <div className="main">
-        <img
-          className="walking-image"
-          src="https://i.gifer.com/5c7V.gif"
-          alt="a walking man"
-        />
+        <div className="image-container">
+          <img
+            className="walking-image"
+            src="https://i.gifer.com/5c7V.gif"
+            alt="a walking man"
+          />
+        </div>
         <h2 className="inProgress">現在{props.name}中</h2>
         <div className="time">{transformSec}</div>
-        {isTraining ? (
+        <div className="btn-container">
+          {isTraining ? (
+            <Button
+              onClick={() => {
+                setIsTraining(false);
+              }}
+              className="start-btn"
+            >
+              一時停止
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                setIsTraining(true);
+              }}
+              className="start-btn"
+            >
+              運動開始
+            </Button>
+          )}
           <Button
             onClick={() => {
               setIsTraining(false);
+              clearTimeout(intervalRef);
             }}
+            className="done-btn"
+            component={Link}
+            to="/top"
           >
-            一時停止
+            終了する
           </Button>
-        ) : (
-          <Button
-            onClick={() => {
-              setIsTraining(true);
-            }}
-          >
-            運動開始
-          </Button>
-        )}
-        <Button
-          onClick={() => {
-            setIsTraining(false);
-            clearTimeout(intervalRef);
-          }}
-          className="done-btn"
-          component={Link}
-          to="/top"
-        >
-          終了する
-        </Button>
+        </div>
       </div>
     </div>
   );
