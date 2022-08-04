@@ -7,7 +7,7 @@ import devImage from './images/dev.jpg';
 import devImage2 from './images/dev2.jpg';
 import desImage from './images/吹き出し.png'
 import { Add, Cached } from '@mui/icons-material';
-import sqImage from './images/イカ警告透.png'
+// import sqImage from './images/イカ警告透.png'
 
 export default function Top() {
   const chooseImg=(number)=>{
@@ -47,10 +47,9 @@ export default function Top() {
   return (
     <div className='top'>
        <PieChart></PieChart>
-       <Box className='startButtonBox'>
+       <div className='startButtonBox'>
        <NavLink to="/task" className="startButton">タスク選択画面へ</NavLink>
-       </Box>
-       <div className='sample'>
+       </div>
        {/* <CardMedia component="img" image={sqImage} style={{width:'40%',position:'absolute', left:0}}/> */}
        <Card className='cautionBox'>
         <CardHeader className='cautionText' title={`自動tweetまで${mins}:${seconds<10?`0${seconds}`:seconds}`}/>
@@ -67,7 +66,6 @@ export default function Top() {
           </Box>
         </Box>
       </Card>
-      </div>
       <input hidden ref={inputRef} type="file" accept="image/*" />
     </div>
 

@@ -5,16 +5,14 @@ import Header from "./Components/Header";
 import Top from "./Components/Top";
 import NotFound from "./Components/NotFound";
 import Task from "./Components/Task";
-import Loading from "./Components/Loading";
 
 function App() {
   return (
     <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<Top/>}/>
+        <Route path="/top" element={<Top/>}/>
         <Route path="task" element={<Task/>}/>
-        <Route path="loading" element={<Loading/>}/>
         <Route path ="*" element={<NotFound/>}/>
       </Routes>
     </Router>

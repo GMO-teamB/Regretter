@@ -4,8 +4,7 @@
     display: 'block';
 }
 .startButtonBox{
-    margin-top: 80px;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-content: center;
     width:100%;
@@ -31,8 +30,8 @@
 }
 .cautionBox{
     width:100%;
-    margin-right: 2px;
-    margin-left: 2px;
+    margin-right: 10px;
+    margin-left: 10px;
     
 }
 .cautionText{
