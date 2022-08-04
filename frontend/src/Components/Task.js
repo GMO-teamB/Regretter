@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "./Task.css";
 import Loading from "./Loading";
 import bossImage from "./images/boss.gif";
 import { CardMedia } from "@mui/material";
+
+//api
+import { fetchTrainings } from '../apis/trainings'; 
+
+  fetchTrainings()
+  .then((data) =>
+    console.log(data)
+  )
+
+
+
+
 
 function Task() {
   const [trainingFilter, setTrainingFilter] = useState("");

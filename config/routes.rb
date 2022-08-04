@@ -7,4 +7,11 @@ Rails.application.routes.draw do
   # get '/app/top', to: 'react_front#react'
   # get '/app/task', to: 'react_front#react'
   get '/app/:path', to: 'react_front#react'
+
+  #apiのためのルーティング
+  namespace :trainings do
+    resources :trainings do
+    end
+  end
+
 end

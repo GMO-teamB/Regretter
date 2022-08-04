@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_04_014906) do
+ActiveRecord::Schema.define(version: 2022_08_04_065838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "trainings", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "calorie", null: false
+    t.integer "category_id", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,10 +31,10 @@ ActiveRecord::Schema.define(version: 2022_08_04_014906) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "uid"
     t.string "provider"
+    t.string "name"
     t.string "sex"
     t.string "weight"
     t.string "age"
-    t.string "name"
     t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

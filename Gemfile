@@ -32,10 +32,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem "omniauth-rails_csrf_protection"
-gem 'react-rails'
-gem 'twitter'
-gem 'dotenv-rails'
-gem 'whenever', require: false
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,6 +46,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'wdm', '>= 0.1.0'
 end
 
 group :test do
