@@ -5,7 +5,6 @@ import Header from "./Components/Header";
 import Top from "./Components/Top";
 import NotFound from "./Components/NotFound";
 import Task from "./Components/Task";
-import Loading from "./Components/Loading";
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Top/>}/>
         <Route path="task" element={<Task/>}/>
-        <Route path="loading" element={<Loading/>}/>
         <Route path ="*" element={<NotFound/>}/>
       </Routes>
     </Router>

@@ -1,12 +1,12 @@
 import "./pichart.css";
-import { Box, CircularProgress, Grid, Typography, Button, CardMedia } from '@mui/material'
+import { Box, CircularProgress, Grid, Typography, Button } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 
 
 export function PieChart(props){
     var now = 600
     const target = 1200
-    const [value, setValue] = useState(70);
+    const [value, setValue] = useState(Number(props.time));
     const [mode, setMode] = useState(1);
     useEffect(()=>{
      setValue(Math.ceil(now*100/(target*mode)))

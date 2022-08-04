@@ -4,8 +4,8 @@ import "./Loading.css";
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-export default function Loading() {
-  const [seconds, setSeconds]=useState(900);
+export default function Loading(props) {
+  const [seconds, setSeconds]=useState(Number(props.time)*60);
   const [isTraining, setIsTraining] = useState(false);
   const intervalRef = useRef(null);
   useEffect(()=>{
@@ -43,7 +43,7 @@ export default function Loading() {
           src="https://i.gifer.com/5c7V.gif"
           alt="a walking man"
         />
-        <h2 className="inProgress">現在運動中</h2>
+        <h2 className="inProgress">現在{props.name}中</h2>
         <div className="time">
           {transformSec}
         </div>

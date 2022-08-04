@@ -17,6 +17,7 @@ import {
   AccountCircle,
 } from '@mui/icons-material';
 import {NavLink} from "react-router-dom";
+import { axios} from 'axios'
 
 function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(true);
@@ -28,7 +29,9 @@ function Header() {
     console.log(inputRef.current);
     inputRef.current?.click();
   };
+  
   const [isSign,setIsSign] = useState(false);
+
   return (
     <header>
       <NavLink to="/" className="service-title">Regretter</NavLink>
