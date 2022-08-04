@@ -28,21 +28,7 @@
 .startButton:hover {
   opacity: 0.7;
 }
-.cautionBox {
-  width: 100%;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-.cautionText {
-  text-align: center;
-  padding-top: 10px;
-}
-.imageBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
+
 .imageChengeButton {
   color: white;
   right: 0;
