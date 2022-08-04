@@ -21,13 +21,10 @@ function Task() {
       console.log("1");
       setTrainingTime(tempTrainingTime);
       setTempTrainingTime("");
-    } else {
       console.log("2");
       setIsError(true);
     }
   };
-
-  //dbができたら上記の値を使ってカロリー計算をする
 
   return isTraining ? (
     <Loading name={trainingName} time={trainingTime} />
@@ -201,7 +198,9 @@ function Task() {
           <div className="training-form">
             <select
               name="menu"
-              className="training-selector"
+              className={`training-selector ${
+                isError && trainingFilter === "" ? "error" : ""
+              }`}
               onChange={(e) => setTrainingFilter(e.target.value)}
               value={trainingFilter}
             >
@@ -257,7 +256,7 @@ function Task() {
           </div>
         </div>
       ) : (
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center" }} className="training-list-wrapper">
           <button
             className="back-btn"
             onClick={() => {
