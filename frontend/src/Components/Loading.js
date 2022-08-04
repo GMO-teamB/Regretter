@@ -48,7 +48,7 @@ export default function Loading(props) {
           {transformSec}
         </div>
         {isTraining?<Button onClick={()=>{setIsTraining(false)}}>一時停止</Button>:<Button onClick={()=>{setIsTraining(true)}}>運動開始</Button>}
-        <Button onClick={()=>{setIsTraining(false);clearTimeout(intervalRef)}}className="done-btn" component={Link} to="/">終了する</Button>
+        <Button onClick={()=>{setIsTraining(false);clearTimeout(intervalRef)}}className="done-btn" component={Link} to="/top">終了する</Button>
       </div>
     </div>
   );
