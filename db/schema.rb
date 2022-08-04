@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_03_023118) do
+ActiveRecord::Schema.define(version: 2022_08_04_065838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "trainings", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "calorie", null: false
+    t.integer "category_id", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

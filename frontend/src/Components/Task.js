@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import "./Task.css";
 import { NavLink } from "react-router-dom";
@@ -6,6 +6,18 @@ import { NavLink } from "react-router-dom";
 //利用したNPM
 //npm install @mui/material @emotion/react @emotion/styled --force
 //npm install @mui/icons-material
+
+//api
+import { fetchTrainings } from '../apis/trainings'; 
+
+  fetchTrainings()
+  .then((data) =>
+    console.log(data)
+  )
+
+
+
+
 
 function Task() {
   const url = "";
