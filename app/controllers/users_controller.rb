@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user! 
   def index
+    byebug
     @user = User.find(3)
 
     render json: {
