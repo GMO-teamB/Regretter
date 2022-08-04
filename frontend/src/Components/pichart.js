@@ -1,10 +1,15 @@
 import "./pichart.css";
 import { Box, CircularProgress, Grid, Typography, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { getCalorie } from "./const";
 
 export function PieChart(props) {
-  var now = 600;
-  const target = 1200;
+  var now = 100;
+
+  const sex = "男性";
+  const age = 21;
+  const weight = 70;
+  const target = getCalorie(sex, age, weight);
   const [value, setValue] = useState(Number(props.time));
   const [mode, setMode] = useState(1);
   useEffect(() => {
