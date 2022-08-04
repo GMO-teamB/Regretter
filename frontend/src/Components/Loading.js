@@ -10,12 +10,10 @@ export default function Loading(props) {
   const intervalRef = useRef(null);
   const [accel, setAccel] = useState(0);
   const permissionRequest = () => {
-    if (
-      DeviceOrientationEvent &&
-      DeviceOrientationEvent.requestPermission &&
-      typeof DeviceOrientationEvent.requestPermission === "function"
-    ) {
+     console.log(1)
+     console.log(typeof DeviceMotionEvent.requestPermission)
       DeviceMotionEvent.requestPermission();
+      DeviceOrientationEvent.requestPermission();
       window.addEventListener(
         "devicemotion",
         function (e) {
@@ -27,7 +25,6 @@ export default function Loading(props) {
         },
         false
       );
-    }
   };
   useEffect(() => {
     if (isTraining) {
@@ -71,8 +68,10 @@ export default function Loading(props) {
         }`}</h2>
         <div className="time">{transformSec}</div>
         <div className="btn-container">
-          <Button onClick={()=>permissionRequest}> 加速度</Button>
+          <Button onClick={()=>permissionRequest()}> 加速度</Button>
           <div>{accel}</div>
+          <div>{typeof DeviceMotionEvent.requestPermission}</div>
+          <div>{typeof DeviceOrientationEvent.requestPermission}</div>
           {isTraining ? (
             <Button
               onMouseLeave={() => {
@@ -92,17 +91,6 @@ export default function Loading(props) {
               ここにマウスを乗せてね！
             </Button>
           )}
-          <Button
-            onClick={() => {
-              setIsTraining(false);
-              clearTimeout(intervalRef);
-            }}
-            className="done-btn"
-            component={Link}
-            to="/top"
-          >
-            終了する
-          </Button>
         </div>
       </div>
     </div>
