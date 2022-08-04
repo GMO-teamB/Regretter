@@ -11,7 +11,7 @@
   align-items: center;
   margin: 2rem 0;
   text-align: center;
-  width:100%;
+  width: 100%;
   max-width: 250px;
 }
 
@@ -33,17 +33,23 @@
 
 .training-selector {
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   cursor: pointer;
   border: 1px solid #33c9dc;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
 }
 
 .training-input {
   margin-bottom: 1.5rem;
-  font-size: 1.9rem;
+  font-size: 2rem;
   text-align: center;
   cursor: pointer;
   border: 1px solid #33c9dc;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
 }
 
 .training-submit-btn:hover {
@@ -62,22 +68,22 @@
   cursor: pointer;
 }
 
-.back-btn{
+.back-btn {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   width: 100%;
-  max-width:100px;
+  max-width: 100px;
   background-color: #33c9dc;
   color: white;
   font-weight: bold;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  margin-top:2rem;
+  margin-top: 2rem;
 }
 
-.back-btn:hover{
-  opacity:0.7;
+.back-btn:hover {
+  opacity: 0.7;
 }
 
 .task-list {
@@ -165,46 +171,50 @@ optgroup {
   color: red;
   text-align: center;
   margin-top: -1rem;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
 }
 
-@media screen and (min-width:768px){
+.cantSubmit {
+  background-color: darkgray;
+}
 
-
+@media screen and (min-width: 768px) {
   .training-head {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 2rem 0;
     text-align: center;
-    width:100%;
+    width: 100%;
     max-width: 100%;
   }
-  
+
   .training-head h3 {
     font-size: 2rem;
   }
-  
+
   .training-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:100%;
-    max-width:500px;
+    width: 100%;
+    max-width: 500px;
   }
-  
+
   .training-selector {
     margin-bottom: 1.5rem;
     font-size: 2.8rem;
     cursor: pointer;
+    max-width: 500px;
   }
-  
+
   .training-input {
     margin-bottom: 1.5rem;
     font-size: 2.9rem;
     text-align: center;
     cursor: pointer;
+    max-width: 500px;
   }
 
   .training-submit-btn {
@@ -224,7 +234,7 @@ optgroup {
   .training-list {
     border-top: 1px solid #33c9dc;
     margin-top: 2rem;
-    width:100%;
-    max-width:400px;
+    width: 100%;
+    max-width: 400px;
   }
 }
