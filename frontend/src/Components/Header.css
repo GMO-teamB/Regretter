@@ -201,7 +201,14 @@ li {
     border-radius: 5px;
     padding: 2px;
   }
-
+  .setting-btn-disabled{
+    font-size: 1rem !important;
+    color: white !important;
+    text-decoration: none !important;
+    background-color: gray !important;
+    border-radius: 10px !important;
+    width: 200px;
+  }
   .setting-btn {
     font-size: 1rem !important;
     color: white !important;
@@ -210,7 +217,14 @@ li {
     border-radius: 10px !important;
     width: 200px;
   }
-
+  .setting-cancel-btn-disabled {
+    color: white !important;
+    text-decoration: none !important;
+    background-color: gray !important;
+    border-radius: 10px !important;
+    font-size: 1rem !important;
+    width: 200px;
+  }
   .setting-cancel-btn {
     color: white !important;
     text-decoration: none !important;

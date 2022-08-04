@@ -105,7 +105,8 @@ function Header() {
               <TableCell>
                 <Button
                   onClick={() => setIsDialogOpen(false)}
-                  className="setting-cancel-btn"
+                  className={isSign?"setting-cancel-btn":"setting-cancel-btn-disabled"}
+                  disabled = {!isSign}
                 >
                   キャンセル
                 </Button>
@@ -117,7 +118,7 @@ function Header() {
                     setIsDialogOpen(false);
                     setIsSign(true);
                   }}
-                  className="setting-btn"
+                  className={age === "" || weight === "" || sex === ""?"setting-btn-disabled":"setting-btn"}
                 >
                   保存
                 </Button>
