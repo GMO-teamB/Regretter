@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/app/static/css/main.cb31fc7e.css",
-    "main.js": "/app/static/js/main.3443f68a.js",
+    "main.css": "/app/static/css/main.8c231d42.css",
+    "main.js": "/app/static/js/main.e66bfa36.js",
     "static/js/787.cda612ba.chunk.js": "/app/static/js/787.cda612ba.chunk.js",
     "static/media/吹き出し.png": "/app/static/media/吹き出し.f3e10067868d32001ed2.png",
     "index.html": "/app/index.html",
-    "main.cb31fc7e.css.map": "/app/static/css/main.cb31fc7e.css.map",
-    "main.3443f68a.js.map": "/app/static/js/main.3443f68a.js.map",
+    "main.8c231d42.css.map": "/app/static/css/main.8c231d42.css.map",
+    "main.e66bfa36.js.map": "/app/static/js/main.e66bfa36.js.map",
     "787.cda612ba.chunk.js.map": "/app/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb31fc7e.css",
-    "static/js/main.3443f68a.js"
+    "static/css/main.8c231d42.css",
+    "static/js/main.e66bfa36.js"
   ]
 }
