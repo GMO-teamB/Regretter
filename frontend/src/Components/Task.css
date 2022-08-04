@@ -90,6 +90,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
   text-decoration: underline;
 }
 
@@ -230,9 +231,9 @@ optgroup {
     margin-top: 0.5rem;
   }
 
-  .training-list-wrapper{
+  .training-list-wrapper {
     width: 100%;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -244,7 +245,7 @@ optgroup {
     max-width: 400px;
   }
 
-  .task-list{
+  .task-list {
     margin-top: 2rem;
   }
 }
