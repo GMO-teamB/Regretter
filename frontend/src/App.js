@@ -9,11 +9,11 @@ import Task from "./Components/Task";
 function App() {
   return (
     <Router>
-      <Header/>
+      <Header />
       <Routes>
-        <Route path="/top" element={<Top/>}/>
-        <Route path="task" element={<Task/>}/>
-        <Route path ="*" element={<NotFound/>}/>
+        <Route path="/top" element={<Top />} />
+        <Route path="task" element={<Task />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
