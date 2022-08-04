@@ -8,6 +8,27 @@ export default function Loading(props) {
   const [seconds, setSeconds] = useState(Number(props.time) * 60);
   const [isTraining, setIsTraining] = useState(false);
   const intervalRef = useRef(null);
+  const [accel, setAccel] = useState(0);
+  const permissionRequest = () => {
+    if (
+      DeviceOrientationEvent &&
+      DeviceOrientationEvent.requestPermission &&
+      typeof DeviceOrientationEvent.requestPermission === "function"
+    ) {
+      DeviceMotionEvent.requestPermission();
+      window.addEventListener(
+        "devicemotion",
+        function (e) {
+          const x = e.acceleration.x;
+          const y = e.acceleration.y;
+          const z = e.acceleration.z;
+          const acc = x ^ (2 + y) ^ (2 + z) ^ 2;
+          setAccel(acc);
+        },
+        false
+      );
+    }
+  };
   useEffect(() => {
     if (isTraining) {
       intervalRef.current = setInterval(() => {
@@ -45,26 +66,30 @@ export default function Loading(props) {
             alt="a walking man"
           />
         </div>
-        <h2 className="inProgress">現在{props.name}中</h2>
+        <h2 className="inProgress">{`${
+          isTraining ? `現在${props.name}中` : "マウスを乗せてね！"
+        }`}</h2>
         <div className="time">{transformSec}</div>
         <div className="btn-container">
+          <Button onClick={()=>permissionRequest}> 加速度</Button>
+          <div>{accel}</div>
           {isTraining ? (
             <Button
-              onClick={() => {
+              onMouseLeave={() => {
                 setIsTraining(false);
               }}
               className="start-btn"
             >
-              一時停止
+              運動中
             </Button>
           ) : (
             <Button
-              onClick={() => {
+              onMouseEnter={() => {
                 setIsTraining(true);
               }}
               className="start-btn"
             >
-              運動開始
+              ここにマウスを乗せてね！
             </Button>
           )}
           <Button
