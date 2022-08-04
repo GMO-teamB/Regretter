@@ -63,7 +63,9 @@ export default function Loading(props) {
             alt="a walking man"
           />
         </div>
-        <h2 className="inProgress">現在{props.name}中</h2>
+        <h2 className="inProgress">{`${
+          isTraining ? `現在${props.name}中` : "マウスを乗せてね！"
+        }`}</h2>
         <div className="time">{transformSec}</div>
         <div className="btn-container">
           <Button onClick={()=>permissionRequest()}> 加速度</Button>
@@ -72,21 +74,21 @@ export default function Loading(props) {
           <div>{typeof DeviceOrientationEvent.requestPermission}</div>
           {isTraining ? (
             <Button
-              onClick={() => {
+              onMouseLeave={() => {
                 setIsTraining(false);
               }}
               className="start-btn"
             >
-              一時停止
+              運動中
             </Button>
           ) : (
             <Button
-              onClick={() => {
+              onMouseEnter={() => {
                 setIsTraining(true);
               }}
               className="start-btn"
             >
-              運動開始
+              ここにマウスを乗せてね！
             </Button>
           )}
         </div>
