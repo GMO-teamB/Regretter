@@ -26,7 +26,9 @@ function Header() {
     console.log(inputRef.current);
     inputRef.current?.click();
   };
+
   const [isSign, setIsSign] = useState(false);
+
   return (
     <header>
       <NavLink to="/" className="service-title">

@@ -1,71 +1,70 @@
 .container {
-    background-color: #13aeb4;
-    width: 100%;
-    height: 100vh;
-  }
-  
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 220px;
-  }
-  
-  .walking-image {
-    width: 80%;
-    height: 130px;
-    border-radius: 40%;
-    margin-bottom: 2rem;
-  }
-  
-  .inProgress {
-    margin-bottom: 2rem;
-    color: white;
-  }
-  
-  .timer-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .time {
-    margin-bottom: 4rem;
-    font-size: 2rem;
-    color: white;
-  }
-  
-  .btn-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .start-btn {
-    padding: 10px 20px;
-    border: none;
-    font-size: 1rem;
-  }
-  
-  .start-btn:hover {
-    opacity: 0.7;
-  }
-  
-  .done-btn {
-    padding: 10px 20px;
-    border: none;
-    font-size: 1rem;
-  }
-  
-  .done-btn:hover {
-    opacity: 0.7;
-  }
-  
+  background-color: #13aeb4;
+  width: 100%;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 220px;
+}
+
+.walking-image {
+  width: 80%;
+  height: 130px;
+  border-radius: 40%;
+  margin-bottom: 2rem;
+}
+
+.inProgress {
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.timer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.time {
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.start-btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+}
+
+.start-btn:hover {
+  opacity: 0.7;
+}
+
+.done-btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+}
+
+.done-btn:hover {
+  opacity: 0.7;
+}
