@@ -12,6 +12,7 @@ export default function Loading(props) {
   const permissionRequest = () => {
       DeviceMotionEvent.requestPermission();
       DeviceOrientationEvent.requestPermission();
+      inputref = useRef(null);
       window.addEventListener(
         "devicemotion",
         function (e) {
@@ -26,7 +27,9 @@ export default function Loading(props) {
           setAccel(acc);
           // const k = sumacc + acc 
           setSumAcc(k => k + 1)
-          console.log(sumacc)
+          inputref.current += 1
+          console.log(`sumaccは${sumacc}`)
+          console.log(`レフは${inputref.current}`)
         },
         false
       );
