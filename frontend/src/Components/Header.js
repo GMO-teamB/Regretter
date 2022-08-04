@@ -1,4 +1,5 @@
 import "./Header.css";
+
 import {
   Button,
   Dialog,
@@ -11,12 +12,10 @@ import {
   Box,
   Select,
   MenuItem,
-} from '@mui/material';
-import React, { useRef, useState } from 'react';
-import {
-  AccountCircle,
-} from '@mui/icons-material';
-import {NavLink} from "react-router-dom";
+} from "@mui/material";
+import React, { useRef, useState } from "react";
+import { AccountCircle } from "@mui/icons-material";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(true);
@@ -28,26 +27,34 @@ function Header() {
     console.log(inputRef.current);
     inputRef.current?.click();
   };
-  const [isSign,setIsSign] = useState(false);
+
+  const [isSign, setIsSign] = useState(false);
+
   return (
     <header>
-      <NavLink to="/" className="service-title">Regretter</NavLink>
+      <NavLink to="/" className="service-title">
+        Regretter
+      </NavLink>
       <Box className="iconBox">
-      <Button
-        onClick={() => setIsDialogOpen(true)}
-      >
-          <AccountCircle className="user-icon"/>
-      </Button>
+        <Button onClick={() => setIsDialogOpen(true)}>
+          <AccountCircle className="user-icon" />
+        </Button>
       </Box>
-      <Dialog open={isDialogOpen} fullWidth maxWidth="md"
+      <Dialog
+        open={isDialogOpen}
+        fullWidth
+        maxWidth="md"
         PaperProps={{
           style: {
             boxShadow: "none",
             textAlign: "center",
-            width:'auto',
+            width: "auto",
           },
-        }}>
-        <DialogTitle>{!isSign?'最初に設定を入力してね！':'設定'}</DialogTitle>
+        }}
+      >
+        <DialogTitle>
+          {!isSign ? "最初に設定を入力してね！" : "設定"}
+        </DialogTitle>
         <DialogContent>
           <TableRow>
             <TableCell>
@@ -59,17 +66,13 @@ function Header() {
             <TableCell>山田太郎</TableCell>
           </TableRow>
           <TableRow>
-          <TableCell>性別</TableCell>
-          <TableCell>
-            <Select value={sex} onChange={(e)=>setSex(e.target.value)}>
-              <MenuItem value='男'>
-              男
-              </MenuItem>
-              <MenuItem value='女'>
-              女
-              </MenuItem>
-            </Select>
-          </TableCell>
+            <TableCell>性別</TableCell>
+            <TableCell>
+              <Select value={sex} onChange={(e) => setSex(e.target.value)}>
+                <MenuItem value="男">男</MenuItem>
+                <MenuItem value="女">女</MenuItem>
+              </Select>
+            </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>体重</TableCell>
@@ -81,17 +84,25 @@ function Header() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell >年齢</TableCell>
+            <TableCell>年齢</TableCell>
             <TableCell>
               <TextField onChange={(e) => setAge(e.target.value)} value={age} />
             </TableCell>
           </TableRow>
-          <TableRow >
+          <TableRow>
             <TableCell>
               <Button onClick={() => setIsDialogOpen(false)}>キャンセル</Button>
             </TableCell>
             <TableCell>
-              <Button disabled={(age === ''||weight===''||sex==='')}onClick={() => {setIsDialogOpen(false);setIsSign(true)}}>保存</Button>
+              <Button
+                disabled={age === "" || weight === "" || sex === ""}
+                onClick={() => {
+                  setIsDialogOpen(false);
+                  setIsSign(true);
+                }}
+              >
+                保存
+              </Button>
             </TableCell>
           </TableRow>
         </DialogContent>

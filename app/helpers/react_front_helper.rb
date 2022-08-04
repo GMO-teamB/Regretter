@@ -1,0 +1,2 @@
+module ReactFrontHelper
+end

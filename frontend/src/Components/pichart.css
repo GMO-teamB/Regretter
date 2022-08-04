@@ -1,27 +1,54 @@
-.circleBox{
-    display:"inline-flex";
-    align-items: center;
-    justify-content: center;
-    height:300px;
-    width:100%;
-    margin-top: 50px;
+.circleBox {
+  display: "inline-flex";
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+  width: 100%;
 }
-
-.circleContent{
+.changeModeRow {
+  display: "flex";
+}
+.selectedButton {
+  background-color: aqua;
+}
+.notSelectedButton {
+  background-color: #bfbfbf;
+}
+.circleContent {
   left: 0;
   top: 16px;
   bottom: 0;
   right: 0;
 }
-.probability{
+.probability {
   margin-bottom: 4px;
 }
 
-.circleBackground{
+.circleBackground {
   color: #bfbfbf;
 }
 
-.circle{
+.circle {
   position: absolute;
-  color:white;
+  color: white;
+}
+
+.changeModeRow {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.selectedButton {
+  background-color: #33c9dc !important;
+  color: white !important;
+  margin: 2rem 0 !important;
+  font-weight: bold !important;
+  border: 3px #149edd solid !important;
+}
+
+.notSelectedButton {
+  background-color: #33c9dc !important;
+  color: white !important;
+  margin: 2rem 0 !important;
+  font-weight: bold !important;
 }

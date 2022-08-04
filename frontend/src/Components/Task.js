@@ -1,11 +1,8 @@
 import React, { useState} from "react";
-import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import "./Task.css";
-import { NavLink } from "react-router-dom";
-
-//利用したNPM
-//npm install @mui/material @emotion/react @emotion/styled --force
-//npm install @mui/icons-material
+import Loading from "./Loading";
+import bossImage from "./images/boss.gif";
+import { CardMedia } from "@mui/material";
 
 //api
 import { fetchTrainings } from '../apis/trainings'; 
@@ -20,116 +17,172 @@ import { fetchTrainings } from '../apis/trainings';
 
 
 function Task() {
-  const url = "";
-
-  const [trainingSelect, setTrainingSelect] = useState("");
-  const [trainingInput, setTrainingInput] = useState("");
+  const [trainingFilter, setTrainingFilter] = useState("");
+  const [trainingTime, setTrainingTime] = useState('');
+  const [tempTrainingTime, setTempTrainingTime] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [trainingName, setTrainingName] = useState("");
 
   //ここにフィルタリングの機能を追加する　dbができた後、、
-
-  const trainingSelectHandler = (e) => {
-    setTrainingSelect(e.target.value);
-  };
-  const trainingInputHandler = (e) => {
-    setTrainingInput(e.target.value);
-  };
-
-  const formSubmitHandler = async (e) => {
-    e.preventDefault();
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ trainingSelect }, { trainingInput }),
-    })
-      .then((res) => {
-        console.log("送信成功！！");
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log("送信失敗！！");
-        console.log(err);
-      });
-  };
 
   const jogValue = 80;
   const shutValue = 150;
   const pushUpValue = 50;
+  const [isTraining, setIsTraining] = useState(false);
 
-  //dbができたら上記の値を使ってカロリー計算をする
+  const sanitizedNumSet = (text)=>{
+    console.log(text)
+    if(text === ''){
+      setTempTrainingTime('')
+    }
+    let tex = text.trim()
+    console.log(tex)
+    tex = tex.replace('.','')
+    tex = tex.replace('-','')
+    tex = tex.replace(/^0+/,'')
+    setTempTrainingTime(tex)
+  }
 
-  return (
+  const sendHandler = () => {
+    if (tempTrainingTime !== "" && trainingFilter !== "") {
+      console.log("1");
+      setTrainingTime(tempTrainingTime);
+      setTempTrainingTime("");
+      setIsError(false)
+    }else{
+      console.log("2");
+      setIsError(true)
+    }
+  };
+
+  return isTraining ? (
+    <Loading name={trainingName} time={trainingTime} />
+  ) : (
     <div className="training-container">
-      <div className="training-head">
-        <DirectionsRunIcon />
-        <h3 className>実行する種目と時間を指定してください</h3>
-      </div>
+      {" "}
+      {trainingFilter === "" || trainingTime === "" ? (
+        <div>
+          <div className="training-head">
+            <CardMedia component='img'image={bossImage} style={{width:'40%'}}/>
+            <h3>カテゴリーと時間を選ぶわん!</h3>
+          </div>
+          <div className="training-form">
+            <select
+              name="menu"
+              className={`training-selector ${
+                isError && trainingFilter === "" ? "error" : ""
+              }`}
+              onChange={(e) => setTrainingFilter(e.target.value)}
+              value={trainingFilter}
+            >
+              <optgroup>
+                <option
+                  className="option-text"
+                  value=''
+                  selected
+                  disabled
+                >
+                  カテゴリーを選択
+                </option>
+                <option className="option-text" value="有酸素運動">
+                  有酸素運動
+                </option>
+                <option className="option-text" value="無酸素運動">
+                  無酸素運動
+                </option>
+              </optgroup>
+            </select>
+            {isError && trainingFilter === "" && (
+              <p className="error-msg">選択してください</p>
+            )}
 
-      <form
-        className="training-form"
-        onSubmit={formSubmitHandler}
-        method="POST"
-      >
-        <select
-          name="menu"
-          className="training-selector"
-          onChange={trainingSelectHandler}
-          value={trainingSelect}
-        >
-          <optgroup>
-            <option value="ジョギング">ジョギング</option>
-            <option value="時速５km以上で歩く">時速５km以上で歩く</option>
-            <option value="腕立て伏せをする">腕立て</option>
-            <option value="シャトルラン">シャトルラン</option>
-          </optgroup>
-        </select>
-
-        <input
-          type="text"
-          className="training-input"
-          placeholder="時間指定 (分)"
-          value={trainingInput}
-          onChange={trainingInputHandler}
-        />
-
-        <button type="submit" className="training-submit-btn">
-          タスクを決定
-        </button>
-      </form>
-      <div className="training-list">
-        <div className="training-card-wrapper">
-          <p className="task-list">タスク一覧</p>
-          
-          <NavLink to="/loading" className="training-card">
-            <DirectionsRunIcon className="card-icon" />
-            <p className="training-name">ジョギング</p>
-            </NavLink>
-          <div className="training-calorie">
-            <p>１分あたり: {jogValue}kcal消費</p>
+            <input
+              type="number"
+              className={`training-input ${
+                isError && tempTrainingTime === "" ? "error" : ""
+              }`}
+              placeholder="数値 (分)"
+              value={tempTrainingTime}
+              onChange={(e) => {console.log(e.target.value);sanitizedNumSet(e.target.value)}}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  console.log("Enter!");
+                  sendHandler();
+                }
+              }}
+            />
+            {isError && tempTrainingTime === "" && (
+              <p className="error-msg">＊入力してください</p>
+            )}
+            <button
+              className="training-submit-btn"
+              onClick={() => sendHandler()}
+            >
+              決定
+            </button>
           </div>
         </div>
+      ) : (
+        <div style={{ textAlign: "center" }} className="training-list-wrapper">
+          <button
+            className="back-btn"
+            onClick={() => {
+              setTrainingFilter("");
+              setTrainingTime("");
+              setTempTrainingTime("");
+            }}
+          >
+            再入力
+          </button>
+          <div className="training-list">
+            <p className="task-list">タスク一覧</p>
+            <div className="training-card-wrapper">
+              <div
+                className="training-card"
+                onClick={() => {
+                  setIsTraining(true);
+                  setTrainingName("ジョギング");
+                }}
+              >
+                <p className="training-name">ジョギング</p>
+              </div>
+              <div className="training-calorie">
+                <p>１分あたり: {jogValue}kcal消費</p>
+              </div>
+            </div>
 
-        <div className="training-card-wrapper">
-        <NavLink to="/loading" className="training-card">
-            <DirectionsRunIcon className="card-icon" />
-            <p className="training-name">シャトルラン</p>
-            </NavLink>
-          <div className="training-calorie">
-            <p>１分あたり: {shutValue}kcal消費</p>
+            <div className="training-card-wrapper">
+              <div
+                className="training-card"
+                onClick={() => {
+                  setIsTraining(true);
+                  setTrainingName("シャトルラン");
+                }}
+              >
+                <p className="training-name">シャトルラン</p>
+              </div>
+              <div className="training-calorie">
+                <p>１分あたり: {shutValue}kcal消費</p>
+              </div>
+            </div>
+
+            <div className="training-card-wrapper">
+              <div
+                className="training-card"
+                onClick={() => {
+                  setIsTraining(true);
+                  setTrainingName("腕立て");
+                }}
+              >
+                <p className="training-name">腕立て</p>
+              </div>
+              <div className="training-calorie" id="training-calorie-id">
+                <p>１分あたり: {pushUpValue}kcal消費</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="training-card-wrapper">
-        <NavLink to="/loading" className="training-card">
-            <DirectionsRunIcon className="card-icon" />
-            <p className="training-name">腕立て</p>
-            </NavLink>
-          <div className="training-calorie" id="training-calorie-id">
-            <p>１分あたり: {pushUpValue}kcal消費</p>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

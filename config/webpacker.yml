@@ -33,6 +33,7 @@ default: &default
     - .woff2
 
   extensions:
+    - .jsx
     - .mjs
     - .js
     - .sass
@@ -80,13 +81,13 @@ test:
   public_output_path: packs-test
 
 production:
-  <<: *default 
+  <<: *default
 
   # Production depends on precompilation of packs prior to booting for performance.
-  compile: true
+  compile: false
 
   # Extract and emit a css file
-  extract_css: false
+  extract_css: true
 
   # Cache manifest.json for performance
-  cache_manifest: false
+  cache_manifest: true
