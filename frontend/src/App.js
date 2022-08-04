@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<Top/>}/>
+        <Route path="/top" element={<Top/>}/>
         <Route path="task" element={<Task/>}/>
         <Route path ="*" element={<NotFound/>}/>
       </Routes>
