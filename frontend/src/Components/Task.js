@@ -6,19 +6,20 @@ function Task() {
   const [trainingSelect, setTrainingSelect] = useState("");
   const [trainingInput, setTrainingInput] = useState("");
   const [isEmpty, setIsEmpty] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
   const [sendData, setSendData] = useState("");
   const [sendData2, setSendData2] = useState("");
+  const [selectorIsError, setSelectorIsError] = useState(false);
+  const [inputIsError, setInputIsError] = useState(false);
 
   //ここにフィルタリングの機能を追加する　dbができた後、、
 
   const trainingSelectHandler = (e) => {
     setTrainingSelect(e.target.value);
+    setSelectorIsError(false);
   };
   const trainingInputHandler = (e) => {
-    setIsTyping(true);
     setTrainingInput(e.target.value);
+    setInputIsError(false);
   };
 
   const sendHandler = () => {
@@ -29,27 +30,45 @@ function Task() {
   const trainingSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (trainingInput < 1 || trainingInput === "") {
-      setIsError(true);
-      return;
-    }
-
-    if (trainingInput < 1 && trainingInput !== "") {
-      setIsError(true);
-      return;
-    }
-
-    if (trainingInput !== "" && trainingInput > 0) {
+    if (trainingInput !== "" && trainingInput > 0 && trainingSelect !== "") {
+      setInputIsError(false);
+      setSelectorIsError(false);
       setIsEmpty(false);
-      setIsError(false);
+    }
+
+    if (
+      (trainingInput === "" || (trainingInput && trainingInput < 1)) &&
+      trainingSelect === ""
+    ) {
+      setInputIsError(true);
+      setSelectorIsError(true);
+    }
+    if (trainingInput === "" || (trainingInput && trainingInput < 1)) {
+      setInputIsError(true);
+    } else if (trainingSelect === "") {
+      setSelectorIsError(true);
     }
 
     setSendData(trainingSelect);
     setSendData2(trainingInput);
 
-    setTrainingInput("");
-    setIsTyping(false);
-    setIsError(false);
+    if (
+      (trainingInput === "" || (trainingInput !== "" && trainingInput > 0)) &&
+      trainingSelect !== ""
+    ) {
+      setTrainingInput("");
+    } else if (
+      trainingSelect === "" &&
+      trainingInput !== "" &&
+      trainingInput > 0
+    ) {
+      setTrainingSelect("");
+    }
+
+    if (trainingInput !== 0 && trainingInput > 0 && trainingSelect !== "") {
+      setTrainingInput("");
+      setTrainingSelect("");
+    }
   };
 
   const jogValue = 80;
@@ -221,38 +240,45 @@ function Task() {
               d="M22.893,54H17.5c-0.828,0-1.5-0.672-1.5-1.5l0,0c0-0.828,0.672-1.5,1.5-1.5h0.393	c0.996,0,1.92-0.681,2.08-1.664C20.176,48.083,19.215,47,18,47h-5v4v3v1c0,1.657,1.343,3,3,3h7c1.215,0,2.177-1.083,1.973-2.336	C24.813,54.681,23.889,54,22.893,54z"
             />
           </svg>
-          <h3>実行する種目と時間を指定してください</h3>
+          <h3>カテゴリーと時間を指定してください</h3>
         </div>
       )}
       {isEmpty && (
         <form className="training-form" onSubmit={trainingSubmitHandler}>
           <select
             name="menu"
-            className="training-selector"
+            className={`training-selector ${
+              selectorIsError === true ? "error" : ""
+            }`}
             onChange={trainingSelectHandler}
             value={trainingSelect}
           >
             <optgroup>
-              <option value="" selected disabled hidden>
-                種目を選択
+              <option className="option-text" value="" selected disabled hidden>
+                カテゴリー選択
               </option>
-              <option value="ジョギング">ジョギング</option>
-              <option value="時速５km以上で歩く">時速５km以上で歩く</option>
-              <option value="腕立て伏せをする">腕立て</option>
-              <option value="シャトルラン">シャトルラン</option>
+              <option className="option-text" value="有酸素運動">
+                有酸素運動
+              </option>
+              <option className="option-text" value="無酸素運動">
+                無酸素運動
+              </option>
             </optgroup>
           </select>
+          {selectorIsError && (
+            <p className="error-msg">
+              {trainingSelect === "" ? "＊選択してください" : ""}
+            </p>
+          )}
 
           <input
             type="number"
-            className={`training-input ${
-              isError ? "error" : isTyping ? "" : ""
-            }`}
+            className={`training-input ${inputIsError ? "error" : ""}`}
             placeholder="数値 (分)"
             value={trainingInput}
             onChange={trainingInputHandler}
           />
-          {isError && (
+          {inputIsError && (
             <p className="error-msg">
               {trainingInput === ""
                 ? "＊入力してください"
