@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def index
-    byebug
     @user = User.find(3)
 
     render json: {
