@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { AccountCircle } from "@mui/icons-material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import devImage from "./images/dev.jpg";
 
 function Header() {
@@ -50,11 +50,14 @@ function Header() {
       console.log(err);
     }
   };
+  const location = useLocation();
+  const check = location.pathname
 
   return (
+    check === '/'?<div></div>:
     <>
       <header>
-        <NavLink to="/" className="service-title">
+        <NavLink to="/top/" className="service-title">
           Regretter
         </NavLink>
         <Box className="iconBox">

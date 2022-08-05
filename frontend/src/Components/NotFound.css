@@ -6,7 +6,7 @@
 
 .notFound-container {
   height: 100vh;
-  background-color: white;
+  background-color: #33c9dc;
 }
 
 .notFound-card-wrapper {
@@ -31,7 +31,8 @@
 }
 
 .notFound-error {
-  font-size: 4rem;
+  font-size: 3rem;
+  color:white;
 }
 
 .notFound-error-msg {
