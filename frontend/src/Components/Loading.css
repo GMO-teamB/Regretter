@@ -32,9 +32,15 @@
   margin-bottom: 2rem;
 }
 
-.inProgress {
+.desktop-inProgress {
   margin-bottom: 2rem;
   color: white;
+}
+
+.mobile-inProgress {
+  margin-bottom: 2rem;
+  color: white;
+  display: none;
 }
 
 .timer-form {
@@ -80,6 +86,7 @@
   color: white !important;
   width: 100%;
   max-width: 150px;
+  display: none !important;
 }
 
 .mobile-start-btn:hover {
@@ -101,11 +108,25 @@
 }
 
 @media screen and (max-width: 768px) {
-  .inProgress {
+  .mobile-inProgress {
+    display: initial;
+  }
+
+  .desktop-inProgress {
     display: none;
   }
 
-  .mobile-start-button {
+  .desktop-inProgress {
+    margin-bottom: 2rem;
+    color: white;
     display: none;
+  }
+
+  .mobile-start-btn {
+    display: block !important;
+  }
+
+  .desktop-start-btn {
+    display: none !important;
   }
 }
