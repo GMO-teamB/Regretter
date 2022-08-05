@@ -33,6 +33,31 @@ function Header() {
 
   const [isSign, setIsSign] = useState(false);
 
+  const sanitizedAgeSet = (text) => {
+    if (text === "") {
+      setAge("");
+    }
+    let tex = text.trim();
+    tex = tex.replace("e","");
+    tex = tex.replace(".", "");
+    tex = tex.replace("-", "");
+    tex = tex.replace(/^0+/, "");
+    setAge(tex);
+  };
+
+  const sanitizedWeightSet = (text) => {
+    if (text === "") {
+      setWeight("");
+    }
+    let tex = text.trim();
+    tex = tex.replace("e","");
+    tex = tex.replace(".", "");
+    tex = tex.replace("-", "");
+    tex = tex.replace(/^0+/, "");
+    setWeight(tex);
+  };
+
+
   const requestOption = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -108,7 +133,8 @@ function Header() {
               <TableCell>体重</TableCell>
               <TableCell>
                 <TextField
-                  onChange={(e) => setWeight(e.target.value)}
+                  type={"number"}
+                  onChange={(e) => sanitizedWeightSet(e.target.value)}
                   value={weight}
                 />
               </TableCell>
@@ -117,7 +143,8 @@ function Header() {
               <TableCell>年齢</TableCell>
               <TableCell>
                 <TextField
-                  onChange={(e) => setAge(e.target.value)}
+                  type={"number"}
+                  onChange={(e) => sanitizedAgeSet(e.target.value)}
                   value={age}
                 />
               </TableCell>
