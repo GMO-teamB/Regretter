@@ -131,7 +131,6 @@ export default function Loading(props) {
               運動開始！
             </Button>
           )}
-
           {isTraining ? (
             <Button
               onMouseLeave={() => {

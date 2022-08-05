@@ -66,7 +66,6 @@
   color: white !important;
   width: 100%;
   max-width: 150px;
-  display: none;
 }
 
 .desktop-start-btn:hover {
@@ -108,9 +107,5 @@
 
   .mobile-start-button {
     display: none;
-  }
-
-  .desktop-start-btn {
-    display: initial;
   }
 }
