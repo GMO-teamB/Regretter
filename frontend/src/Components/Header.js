@@ -18,6 +18,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { AccountCircle } from "@mui/icons-material";
 import { NavLink, useLocation } from "react-router-dom";
 import devImage from "./images/dev.jpg";
+import { useCalorieContext } from "./calorieContext";
+import { getCalorie } from "./const";
 
 function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -66,17 +68,20 @@ function Header() {
 
   const url = "http://localhost:3000/";
 
-  const requestData = async () => {
-    try {
-      const response = await fetch(url, requestOption);
-      const data = await response.json();
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const requestData = async () => {
+  //   try {
+  //     const response = await fetch(url, requestOption);
+  //     const data = await response.json();
+  //     console.log(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   const location = useLocation();
   const check = location.pathname
+
+  const calorieContext = useCalorieContext();
+  const setTarget = calorieContext.setTarget;
 
   return (
     check === '/'?<div></div>:
@@ -124,8 +129,8 @@ function Header() {
                   onChange={(e) => setSex(e.target.value)}
                   className="genderSelect"
                 >
-                  <MenuItem value="男">男</MenuItem>
-                  <MenuItem value="女">女</MenuItem>
+                  <MenuItem value="男性">男性</MenuItem>
+                  <MenuItem value="女性">女性</MenuItem>
                 </Select>
               </TableCell>
             </TableRow>
@@ -165,7 +170,9 @@ function Header() {
                   onClick={() => {
                     setIsDialogOpen(false);
                     setIsSign(true);
-                    requestData();
+                    // requestData();
+                    console.log(getCalorie(sex,age,weight))
+                    setTarget(getCalorie(sex,age,weight))
                   }}
                   className={age === "" || weight === "" || sex === ""?"setting-btn-disabled":"setting-btn"}
                 >

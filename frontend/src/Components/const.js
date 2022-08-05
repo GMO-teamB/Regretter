@@ -1,4 +1,9 @@
-export const getCalorie = (sex, age, weight) => {
+export const getCalorie = (sex, ag, weigh) => {
+  console.log(sex)
+  console.log(ag)
+  console.log(weigh)
+  const age = Number(ag)
+  const weight = Number(weigh)
   if (sex === "男性" && age >= 50) {
     const cal = Math.floor(21.5 * weight);
     return cal;
