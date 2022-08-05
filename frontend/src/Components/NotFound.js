@@ -7,10 +7,8 @@ function NotFound() {
     <div className="notFound-container">
       <div className="notFound-card-wrapper">
         <div className="notFound-error-msg-wrapper">
-          <h1 className="notFound-error-num">404</h1>
-          <h2 className="notFound-error">エラー！！</h2>
-          <p className="notFound-error-msg">お探しのページが見つかりません</p>
-          <NavLink to="/" className="notFound-top-button">
+          <h2 className="notFound-error">Regretter</h2>
+          <NavLink to="/top" className="notFound-top-button">
             Topへ
           </NavLink>
         </div>
