@@ -68,7 +68,6 @@
 }
 
 .alert-box {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,6 +77,11 @@
   text-align: center;
   padding-top: 10px;
   width: 100%;
+  max-width: 300px;
+}
+
+.css-1pxa9xg-MuiAlert-message {
+  overflow: hidden !important;
 }
 
 .cautionText span {

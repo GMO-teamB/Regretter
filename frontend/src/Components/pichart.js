@@ -50,7 +50,7 @@ export function PieChart(props) {
 
       <div className="desktop-wrapper">
         <div className="warning-container">
-          <Alert className="alert-box" severity="error">
+          <Alert style={{ padding: 0 }} className="alert-box" severity="error">
             <AlertTitle className="alert-title">Warning</AlertTitle>
             目標に達していません — <strong>早めに！</strong>
             <div className="tweet-warning">
