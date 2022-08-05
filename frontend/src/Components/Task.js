@@ -16,7 +16,7 @@ function Task() {
 
   const [isTraining, setIsTraining] = useState(false);
   const [trainings, setTrainings] = useState([]);
-  const [caloriePerMin, setCaloriePerMin ] = useState(0);
+  const [caloriePerMin, setCaloriePerMin] = useState(0);
 
   const filteredHandler = (num) => {
     const filteredTraining = trainings.filter(
@@ -70,7 +70,11 @@ function Task() {
   };
 
   return isTraining ? (
-    <Loading name={trainingName} time={trainingTime} caloriePerMin={caloriePerMin}/>
+    <Loading
+      name={trainingName}
+      time={trainingTime}
+      caloriePerMin={caloriePerMin}
+    />
   ) : (
     <div className="training-container">
       {" "}
@@ -222,36 +226,36 @@ function Task() {
               </div>
             ) : (
               <div>
-              <div className="training-card-wrapper">
-                <div
-                  className="training-card"
-                  onClick={() => {
-                    setIsTraining(true);
-                    setTrainingName("腹筋");
-                    setCaloriePerMin(15);
-                  }}
-                >
-                  <p className="training-name">腹筋</p>
+                <div className="training-card-wrapper">
+                  <div
+                    className="training-card"
+                    onClick={() => {
+                      setIsTraining(true);
+                      setTrainingName("腹筋");
+                      setCaloriePerMin(15);
+                    }}
+                  >
+                    <p className="training-name">腹筋</p>
+                  </div>
+                  <div className="training-calorie">
+                    <p>１分あたり: 15kcal消費</p>
+                  </div>
                 </div>
-                <div className="training-calorie">
-                  <p>１分あたり: 15kcal消費</p>
+                <div className="training-card-wrapper">
+                  <div
+                    className="training-card"
+                    onClick={() => {
+                      setIsTraining(true);
+                      setTrainingName("スクワット");
+                      setCaloriePerMin(1000);
+                    }}
+                  >
+                    <p className="training-name">スクワット</p>
+                  </div>
+                  <div className="training-calorie">
+                    <p>1分あたり: 1000kcal消費</p>
+                  </div>
                 </div>
-              </div>
-              <div className="training-card-wrapper">
-                <div
-                  className="training-card"
-                  onClick={() => {
-                    setIsTraining(true);
-                    setTrainingName("スクワット");
-                    setCaloriePerMin(1000);
-                  }}
-                >
-                  <p className="training-name">スクワット</p>
-                </div>
-                <div className="training-calorie">
-                  <p>1分あたり: 1000kcal消費</p>
-                </div>
-              </div>
               </div>
             )}
           </div>
