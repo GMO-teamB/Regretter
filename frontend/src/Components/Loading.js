@@ -113,7 +113,7 @@ export default function Loading(props) {
         //      onClick={() => {
         //        setIsTraining(false);
         //      }}
-        //      className="start-btn"
+        //      className="mobile-start-btn"
         //    >
         //      運動中
         //    </Button>
@@ -123,7 +123,7 @@ export default function Loading(props) {
         //        setIsTraining(true);
         //        permissionRequest();
         //      }}
-        //      className="start-btn"
+        //      className="mobile-start-btn"
         //    >
         //      運動開始！
         //    </Button>
@@ -131,7 +131,7 @@ export default function Loading(props) {
               onMouseLeave={() => {
                 setIsTraining(false);
               }}
-              className="start-btn"
+              className="desktop-start-btn"
             >
               運動中
             </Button>
@@ -140,7 +140,7 @@ export default function Loading(props) {
               onMouseEnter={() => {
                 setIsTraining(true);
               }}
-              className="start-btn"
+              className="desktop-start-btn"
             >
               ここにマウスを乗せてね！
             </Button>
