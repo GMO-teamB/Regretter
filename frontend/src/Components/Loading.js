@@ -17,21 +17,21 @@ export default function Loading(props) {
   const calorieContext = useCalorieContext();
   const setCalorie = calorieContext.setCalorie
   const calorie = calorieContext.calorie
-  const permissionRequest = () => {
-    DeviceMotionEvent.requestPermission();
-    DeviceOrientationEvent.requestPermission();
-    window.addEventListener(
-      "devicemotion",
-      function (e) {
-        const x = e.acceleration.x;
-        const y = e.acceleration.y;
-        const z = e.acceleration.z;
-        const acc = (x ^ 2) + (y ^ 2) + (z ^ 2);
-        setAccel(acc);
-      },
-      false
-    );
-  };
+  // const permissionRequest = () => {
+  //   DeviceMotionEvent.requestPermission();
+  //   DeviceOrientationEvent.requestPermission();
+  //   window.addEventListener(
+  //     "devicemotion",
+  //     function (e) {
+  //       const x = e.acceleration.x;
+  //       const y = e.acceleration.y;
+  //       const z = e.acceleration.z;
+  //       const acc = (x ^ 2) + (y ^ 2) + (z ^ 2);
+  //       setAccel(acc);
+  //     },
+  //     false
+  //   );
+  // };
 
   useEffect(() => {
     if (isTraining) {
@@ -55,37 +55,37 @@ export default function Loading(props) {
 
   // 以下スマホのみ
 
-  useEffect(() => {
-    if (isTraining) {
-      guardref.current = setInterval(() => {
-        setGuard((k) => k + 1);
-        console.log(2);
-      }, 1000);
-    } else {
-      if (guardref.current) {
-        clearInterval(guardref.current);
-        guardref.current = null;
-      }
-    }
-  }, [isTraining]);
-  useEffect(() => {
-    if (guard > 10) {
-      setGuard(0);
-      setIsOpen(true);
-      setIsTraining(false);
-    }
-    if (accel === 6 && guardref.current === null && isTraining) {
-      guardref.current = setInterval(() => {
-        setGuard((k) => k + 1);
-        console.log(2);
-      }, 1000);
-    }
-    if (accel !== 6) {
-      setGuard(0);
-      clearInterval(guardref.current);
-      guardref.current = null;
-    }
-  }, [guard, accel]);
+  // useEffect(() => {
+  //   if (isTraining) {
+  //     guardref.current = setInterval(() => {
+  //       setGuard((k) => k + 1);
+  //       console.log(2);
+  //     }, 1000);
+  //   } else {
+  //     if (guardref.current) {
+  //       clearInterval(guardref.current);
+  //       guardref.current = null;
+  //     }
+  //   }
+  // }, [isTraining]);
+  // useEffect(() => {
+  //   if (guard > 10) {
+  //     setGuard(0);
+  //     setIsOpen(true);
+  //     setIsTraining(false);
+  //   }
+  //   if (accel === 6 && guardref.current === null && isTraining) {
+  //     guardref.current = setInterval(() => {
+  //       setGuard((k) => k + 1);
+  //       console.log(2);
+  //     }, 1000);
+  //   }
+  //   if (accel !== 6) {
+  //     setGuard(0);
+  //     clearInterval(guardref.current);
+  //     guardref.current = null;
+  //   }
+  // }, [guard, accel]);
 
   const transformSec = useMemo(() => {
     const min = Math.floor(seconds / 60);
@@ -114,7 +114,7 @@ export default function Loading(props) {
         }`}</h2>
         <div className="time">{transformSec}</div>
         <div className="btn-container">
-          {isTraining ? (
+          {/* {isTraining ? (
             // スマホ用
             <Button
               onClick={() => {
@@ -134,7 +134,7 @@ export default function Loading(props) {
             >
               運動開始！
             </Button>
-          )}
+          )} */}
           {isTraining ? (
             <Button
               onMouseLeave={() => {
