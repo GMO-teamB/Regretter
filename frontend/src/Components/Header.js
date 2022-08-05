@@ -14,7 +14,7 @@ import {
   MenuItem,
   CardMedia,
 } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AccountCircle } from "@mui/icons-material";
 import { NavLink } from "react-router-dom";
 import devImage from "./images/dev.jpg";
@@ -32,6 +32,24 @@ function Header() {
   };
 
   const [isSign, setIsSign] = useState(false);
+
+  const requestOption = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sex: { sex }, weight: { weight }, age: { age } }), //userIdもいれる
+  };
+
+  const url = "http://localhost:3000/";
+
+  const requestData = async () => {
+    try {
+      const response = await fetch(url, requestOption);
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -116,6 +134,7 @@ function Header() {
                   onClick={() => {
                     setIsDialogOpen(false);
                     setIsSign(true);
+                    requestData();
                   }}
                   className="setting-btn"
                 >
@@ -145,7 +164,7 @@ function Header() {
                 飽き性なエンジニアのための運動管理アプリです。
               </h3>
               <p className="welcome-p">
-                目標カロリーを達成できなければ、恥ずかしい画像と共ににあなたの醜態が晒されます。
+                目標カロリーを達成できなければ、自動的にTwitterに恥ずかしい画像と共ににあなたの醜態が晒されます。
               </p>
               <p className="imageIntro">画像例</p>
               <CardMedia

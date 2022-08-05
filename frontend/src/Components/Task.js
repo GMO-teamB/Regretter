@@ -1,57 +1,70 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./Task.css";
 import Loading from "./Loading";
 import bossImage from "./images/boss.gif";
 import { CardMedia } from "@mui/material";
 
 //api
-import { fetchTrainings } from '../apis/trainings'; 
-
-  fetchTrainings()
-  .then((data) =>
-    console.log(data)
-  )
-
-
-
-
+import { trainingsIndex } from "../url/index";
 
 function Task() {
   const [trainingFilter, setTrainingFilter] = useState("");
-  const [trainingTime, setTrainingTime] = useState('');
-  const [tempTrainingTime, setTempTrainingTime] = useState('');
+  const [trainingTime, setTrainingTime] = useState("");
+  const [tempTrainingTime, setTempTrainingTime] = useState("");
   const [isError, setIsError] = useState(false);
   const [trainingName, setTrainingName] = useState("");
 
-  //ここにフィルタリングの機能を追加する　dbができた後、、
-
-  const jogValue = 80;
-  const shutValue = 150;
-  const pushUpValue = 50;
   const [isTraining, setIsTraining] = useState(false);
+  const [trainings, setTrainings] = useState([]);
 
-  const sanitizedNumSet = (text)=>{
-    console.log(text)
-    if(text === ''){
-      setTempTrainingTime('')
-    }
-    let tex = text.trim()
-    console.log(tex)
-    tex = tex.replace('.','')
-    tex = tex.replace('-','')
-    tex = tex.replace(/^0+/,'')
-    setTempTrainingTime(tex)
-  }
+  const filteredHandler = (num) => {
+    const filteredTraining = trainings.filter(
+      (training) => training.category_id === num
+    );
+    setTrainings(filteredTraining);
+  };
 
-  const sendHandler = () => {
-    if (tempTrainingTime !== "" && trainingFilter !== "") {
-      console.log("1");
-      setTrainingTime(tempTrainingTime);
+  const sanitizedNumSet = (text) => {
+    if (text === "") {
       setTempTrainingTime("");
-      setIsError(false)
-    }else{
-      console.log("2");
-      setIsError(true)
+    }
+    let tex = text.trim();
+    tex = tex.replace(".", "");
+    tex = tex.replace("-", "");
+    tex = tex.replace(/^0+/, "");
+    setTempTrainingTime(tex);
+  };
+
+  const sendHandler = (e) => {
+    e.preventDefault();
+    if (tempTrainingTime !== "" && trainingFilter !== "") {
+      setTrainingTime(tempTrainingTime);
+      const fetchData = async () => {
+        try {
+          const response = await fetch(trainingsIndex);
+          const trainingData = await response.json();
+          setTrainings(trainingData);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchData();
+
+      const changeToNum = (str) => {
+        if (str === "有酸素運動") {
+          return 1;
+        } else {
+          return 2;
+        }
+      };
+
+      const num = changeToNum(trainingFilter);
+      filteredHandler(num);
+
+      setTempTrainingTime("");
+      setIsError(false);
+    } else {
+      setIsError(true);
     }
   };
 
@@ -63,7 +76,11 @@ function Task() {
       {trainingFilter === "" || trainingTime === "" ? (
         <div>
           <div className="training-head">
-            <CardMedia component='img'image={bossImage} style={{width:'40%'}}/>
+            <CardMedia
+              component="img"
+              image={bossImage}
+              style={{ width: "40%" }}
+            />
             <h3>カテゴリーと時間を選ぶわん!</h3>
           </div>
           <div className="training-form">
@@ -76,12 +93,7 @@ function Task() {
               value={trainingFilter}
             >
               <optgroup>
-                <option
-                  className="option-text"
-                  value=''
-                  selected
-                  disabled
-                >
+                <option className="option-text" value="" selected disabled>
                   カテゴリーを選択
                 </option>
                 <option className="option-text" value="有酸素運動">
@@ -103,7 +115,9 @@ function Task() {
               }`}
               placeholder="数値 (分)"
               value={tempTrainingTime}
-              onChange={(e) => {console.log(e.target.value);sanitizedNumSet(e.target.value)}}
+              onChange={(e) => {
+                sanitizedNumSet(e.target.value);
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   console.log("Enter!");
@@ -115,8 +129,9 @@ function Task() {
               <p className="error-msg">＊入力してください</p>
             )}
             <button
+              type="submit"
               className="training-submit-btn"
-              onClick={() => sendHandler()}
+              onClick={sendHandler}
             >
               決定
             </button>
@@ -134,52 +149,28 @@ function Task() {
           >
             再入力
           </button>
+
           <div className="training-list">
             <p className="task-list">タスク一覧</p>
-            <div className="training-card-wrapper">
-              <div
-                className="training-card"
-                onClick={() => {
-                  setIsTraining(true);
-                  setTrainingName("ジョギング");
-                }}
-              >
-                <p className="training-name">ジョギング</p>
-              </div>
-              <div className="training-calorie">
-                <p>１分あたり: {jogValue}kcal消費</p>
-              </div>
-            </div>
 
-            <div className="training-card-wrapper">
-              <div
-                className="training-card"
-                onClick={() => {
-                  setIsTraining(true);
-                  setTrainingName("シャトルラン");
-                }}
-              >
-                <p className="training-name">シャトルラン</p>
-              </div>
-              <div className="training-calorie">
-                <p>１分あたり: {shutValue}kcal消費</p>
-              </div>
-            </div>
-
-            <div className="training-card-wrapper">
-              <div
-                className="training-card"
-                onClick={() => {
-                  setIsTraining(true);
-                  setTrainingName("腕立て");
-                }}
-              >
-                <p className="training-name">腕立て</p>
-              </div>
-              <div className="training-calorie" id="training-calorie-id">
-                <p>１分あたり: {pushUpValue}kcal消費</p>
-              </div>
-            </div>
+            {trainings.map((training, index) => {
+              return (
+                <div className="training-card-wrapper" key={index}>
+                  <div
+                    className="training-card"
+                    onClick={() => {
+                      setIsTraining(true);
+                      setTrainingName(training.name);
+                    }}
+                  >
+                    <p className="training-name">{training.name}</p>
+                  </div>
+                  <div className="training-calorie">
+                    <p>１分あたり: {training.calorie}kcal消費</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

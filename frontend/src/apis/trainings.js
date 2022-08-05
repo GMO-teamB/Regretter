@@ -9,5 +9,4 @@ export const fetchTrainings =async() => {
   }catch(err){
     console.log(err);
   }
-
 }
