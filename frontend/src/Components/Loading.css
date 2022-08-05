@@ -17,10 +17,10 @@
   max-width: 500px;
 }
 
-.image-container{
-  width:100%;
+.image-container {
+  width: 100%;
   max-width: 220px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -35,7 +35,6 @@
 .inProgress {
   margin-bottom: 2rem;
   color: white;
-  display:none;
 }
 
 .timer-form {
@@ -56,17 +55,17 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap:20px;
+  gap: 20px;
 }
 
 .desktop-start-btn {
   padding: 10px 20px !important;
   border: none !important;
   font-size: 1rem !important;
-  background-color:#33c9dc !important;
-  color:white !important;
-  width:100%;
-  max-width:150px;
+  background-color: #33c9dc !important;
+  color: white !important;
+  width: 100%;
+  max-width: 150px;
 }
 
 .desktop-start-btn:hover {
@@ -77,42 +76,36 @@
   padding: 10px 20px !important;
   border: none !important;
   font-size: 1rem !important;
-  background-color:#33c9dc !important;
-  color:white !important;
-  width:100%;
-  max-width:150px;
-  display:none;
+  background-color: #33c9dc !important;
+  color: white !important;
+  width: 100%;
+  max-width: 150px;
 }
 
 .mobile-start-btn:hover {
   opacity: 0.7;
 }
 
-
 .done-btn {
   padding: 10px 20px !important;
   border: none !important;
   font-size: 1rem !important;
-  background-color:#33c9dc !important;
-  color:white !important;
-  width:100%;
-  max-width:150px;
+  background-color: #33c9dc !important;
+  color: white !important;
+  width: 100%;
+  max-width: 150px;
 }
 
 .done-btn:hover {
   opacity: 0.7;
 }
 
-@media screen and (max-width: 768px){
-  .inProgress{
-    display:initial;
+@media screen and (max-width: 768px) {
+  .inProgress {
+    display: none;
   }
 
-  .mobile-start-button{
-    display:inital;
-  }
-
-  .desktop-start-btn{
-    display:none;
+  .mobile-start-button {
+    display: none;
   }
 }
