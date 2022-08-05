@@ -3,6 +3,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Loading.css";
 import { Button, Dialog, DialogTitle } from "@mui/material";
 import { SubdirectoryArrowRightOutlined } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { useCalorieContext } from "./calorieContext";
 
 export default function Loading(props) {
   const [seconds, setSeconds] = useState(Number(props.time) * 60);
@@ -12,6 +14,9 @@ export default function Loading(props) {
   const [accel, setAccel] = useState(6);
   const [guard, setGuard] = useState(0);
   const [isOpen, setIsOpen] = useState(false)
+  const calorieContext = useCalorieContext();
+  const setCalorie = calorieContext.setCalorie
+  const calorie = calorieContext.calorie
   const permissionRequest = () => {
       DeviceMotionEvent.requestPermission();
       DeviceOrientationEvent.requestPermission();
@@ -145,6 +150,23 @@ export default function Loading(props) {
               ここにマウスを乗せてね！
             </Button>
           )}
+          <Button
+            onClick={() => {
+              setIsTraining(false);
+              clearTimeout(intervalRef.current);
+              if(guardref.current){
+                clearInterval(guardref.current)
+              }
+              setCalorie(calorie + Math.ceil(((props.time * 60-seconds)*props.caloriePerMin)/60))
+              console.log(seconds)
+              console.log(Math.ceil(((props.time-seconds)*props.caloriePerMin)/60))
+            }}
+            className="done-btn"
+            component={Link}
+            to="/top"
+          >
+            終了する
+          </Button>
         </div>
         <Dialog open={isOpen}>
       <DialogTitle>サボってますね！</DialogTitle>

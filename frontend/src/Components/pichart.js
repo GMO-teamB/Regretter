@@ -11,16 +11,16 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getCalorie } from "./const";
+import { useCalorieContext } from "./calorieContext";
 
 export function PieChart(props) {
-  var now = 100;
 
-  const sex = "男性";
-  const age = 21;
-  const weight = 70;
-  const target = getCalorie(sex, age, weight);
   const [value, setValue] = useState(Number(props.time));
   const [mode, setMode] = useState(1);
+  const calorie = useCalorieContext();
+  const target = calorie.target
+  const now = calorie.calorie
+
 
   useEffect(() => {
     setValue(Math.ceil((now * 100) / (target * mode)));
@@ -86,7 +86,7 @@ export function PieChart(props) {
               <Box display={"block"}>
                 <Typography>残り</Typography>
                 <Typography variant="h5" fontSize={60}>
-                  {target * mode - now}
+                  {Math.ceil(target * mode) - now}
                 </Typography>
                 <Typography textAlign={"right"}>Kcal</Typography>
               </Box>

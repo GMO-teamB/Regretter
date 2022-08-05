@@ -5,16 +5,19 @@ import Header from "./Components/Header";
 import Top from "./Components/Top";
 import NotFound from "./Components/NotFound";
 import Task from "./Components/Task";
+import { CalorieContextProvider } from "./Components/calorieContext";
 
 function App() {
   return (
     <Router basename="/app/">
-      <Header />
-      <Routes>
-        <Route path="/top" element={<Top />} />
-        <Route path="task" element={<Task />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <CalorieContextProvider>
+        <Header />
+        <Routes>
+          <Route path="/top" element={<Top />} />
+          <Route path="task" element={<Task />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </CalorieContextProvider>
     </Router>
   );
 }
