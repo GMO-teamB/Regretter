@@ -171,8 +171,22 @@ function Task() {
                 </div>
               );
             })}
+             <div className="training-card-wrapper" >
+                  <div
+                    className="training-card"
+                    onClick={() => {
+                      setIsTraining(true);
+                      setTrainingName('ジョギング');
+                    }}
+                  >
+                    <p className="training-name">'ジョギング'</p>
+                  </div>
+                  <div className="training-calorie">
+                    <p>１分あたり: 100kcal消費</p>
+                  </div>
+                </div>
+            </div>
           </div>
-        </div>
       )}
     </div>
   );

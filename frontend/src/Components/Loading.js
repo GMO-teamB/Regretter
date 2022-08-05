@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./Loading.css";
 import { Button, Dialog, DialogTitle } from "@mui/material";
 import { SubdirectoryArrowRightOutlined } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 export default function Loading(props) {
   const [seconds, setSeconds] = useState(Number(props.time) * 60);
@@ -149,6 +150,20 @@ export default function Loading(props) {
               ここにマウスを乗せてね！
             </Button>
           )}
+          <Button
+            onClick={() => {
+              setIsTraining(false);
+              clearTimeout(intervalRef.current);
+              if(guardref.current){
+                clearInterval(guardref.current)
+              }
+            }}
+            className="done-btn"
+            component={Link}
+            to="/top"
+          >
+            終了する
+          </Button>
         </div>
         <Dialog open={isOpen}>
           <DialogTitle>サボってますね！</DialogTitle>
