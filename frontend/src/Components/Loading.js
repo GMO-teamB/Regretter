@@ -105,11 +105,11 @@ export default function Loading(props) {
             alt="a walking man"
           />
         </div>
-        <h2 className="inProgress">{`${
+        <h2 className="desktop-inProgress">{`${
           isTraining ? `現在${props.name}中` : "マウスを乗せてね！"
         }`}</h2>
         {/* スマホ用 */}
-        <h2 className="inProgress">{`${
+        <h2 className="mobile-inProgress">{`${
           isTraining ? `現在${props.name}中` : "開始してね！"
         }`}</h2>
         <div className="time">{transformSec}</div>
